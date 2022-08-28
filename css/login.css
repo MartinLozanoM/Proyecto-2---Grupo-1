@@ -20,6 +20,17 @@
   color: var(--azulOscuro);
 }
 
+#estadoDeLogueo {
+  justify-content: center;
+  font-size: 12px;
+  color: var(--azulOscuro);
+}
+.estadoDeLogueo_incorrecto {
+  justify-content: center;
+  font-size: 12px;
+  color: red;
+}
+
 /* BREAKPOINTS */
 
 /* MODO TABLET */
