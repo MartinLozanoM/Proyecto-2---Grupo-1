@@ -1,0 +1,14 @@
+/* ESTILOS A LOS ITEMS NAVEGABLES */
+
+.nav-item a {
+  color: #7e8d92; /*color nuevo*/
+}
+
+.colorNavBar {
+  background-color: #283149;
+}
+/* ESTILOS AL LOGO */
+.nav-logo {
+}
+
+/* breakpoints */
