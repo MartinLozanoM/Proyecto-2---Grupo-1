@@ -5,14 +5,14 @@ const USERS = [
   { user: "valentina", password: "valentina" },
 ];
 
-// obtengo el div modal
+// obtengo el div modal de inicio sesion
 const modal = document.getElementById("loginModal");
 // creo el div para contener el modal.
 const contenidoModal = document.createElement("div");
 // Le poongo clase al contenidoModal creado
 contenidoModal.className = "modal-dialog tamañoModal-md";
 
-// inyecto la estructura del contenidoModal
+// inyecto la estructura del contenidoModal de inicio sesion
 contenidoModal.innerHTML = `
 <div class="modal-content">
 <div class="modal-header">

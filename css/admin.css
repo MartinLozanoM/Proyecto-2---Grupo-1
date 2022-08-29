@@ -1,0 +1,51 @@
+.contenedorFlexilla_grilla {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10vh;
+  /* justify-content: center; */
+}
+
+.grilla {
+  background-color: var(--verde);
+  color: var(--azulOscuro);
+}
+
+.encabezado_grilla {
+  font-size: 12px;
+}
+
+.cuerpo_grilla {
+  background-color: var(--blanco);
+  font-size: 12px;
+}
+
+/* Estilos a el contenedor de grilla */
+
+.contenedorGrilla {
+  width: 300px;
+}
+
+/* ESTILOS A LAS ACCIONES DE GRILLA */
+.botonNuevo {
+  padding: 2px;
+  /* margin: 10px; */
+  border: none;
+  background-color: transparent;
+}
+
+/* /////////////////BREAKPOINTS */
+
+/* modo tablet */
+@media (min-width: 768px) {
+  /* aumento tamaño de la grilla */
+  .contenedorGrilla {
+    width: 600px;
+  }
+}
+
+/* modo pc */
+@media (min-width: 992px) {
+} ;
