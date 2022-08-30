@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: 'Montserrat',sans-serif;
+    font-family: "Noto Sans Tamil", sans-serif;
 }
 
 body {
@@ -57,7 +57,7 @@ body {
     color: var(--verde);
     text-decoration: none;
 }
-
+/* Tablets */
 @media screen and (min-width: 768px) {
     .martin-footer {
         flex-direction: row;
@@ -79,7 +79,7 @@ body {
         font-size: 18px;
     }
 }
-
+/* Pcs */
 @media screen and (min-width: 1024px) {
     .martin-social-media i {
         font-size: 24px;
