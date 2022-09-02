@@ -1,0 +1,44 @@
+.cont-banner {
+    min-height: 40em;
+    background: linear-gradient(
+        0deg,
+        rgba(40, 49, 73, 1) 0%,
+        rgba(40, 49, 73, 0.1) 100%
+    ),
+    url(/img/1241136.png);
+    background-position: center center;
+    background-size: cover;
+    display: grid;
+    align-items: end;
+    padding: 5em;
+    margin-bottom: 50px;
+}
+
+.cont-info{
+max-height: em;
+}
+
+.titulo-destacada{
+    font-weight: 600;
+    color: var(--blanco);
+}
+
+.descripcion-destacada{
+    font-weight: 400;
+    color: var(--blanco);
+    max-width: 40%;
+}
+.button-banner{
+    background-color: var(--verde);
+    border: none;
+    border-radius: 100px;
+    padding: 15px;
+    color: var(--blanco);
+    height:50px;
+    width: 70px;
+}
+.button-banner:hover{
+    background-color: var(--blanco);
+    transform: scale(1.05);
+    color: var(--verde);
+}
