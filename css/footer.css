@@ -76,15 +76,15 @@ body {
         align-items: center;
     }
     .martin-derechos {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 /* Pcs */
 @media screen and (min-width: 1024px) {
     .martin-social-media i {
-        font-size: 24px;
+        font-size: 20px;
     }
     .martin-derechos {
-        font-size: 24px;
+        font-size: 20px;
     }
 }
