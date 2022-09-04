@@ -15,7 +15,8 @@
     font-size: 15px;
 }
 
-.m-contenedor-titulo-controles .m-indicadores button {
+.m-contenedor-titulo-controles .indicadores button,
+.m-contenedor-titulo-controles .indicadores-terror button {
     background-color: #fff;
     height: 3px;
     width: 10px;
@@ -24,8 +25,10 @@
     margin-right: 2px;
 }
 
-.m-contenedor-titulo-controles .m-indicadores button:hover,
-.m-contenedor-titulo-controles .m-indicadores button.activo {
+.m-contenedor-titulo-controles .indicadores button:hover,
+.m-contenedor-titulo-controles .indicadores button.activo,
+.m-contenedor-titulo-controles .indicadores-terror button:hover,
+.m-contenedor-titulo-controles .indicadores-terror button.activo {
     background-color: var(--verde);
 }
 
