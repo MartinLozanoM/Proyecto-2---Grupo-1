@@ -5,7 +5,7 @@
       rgba(40, 49, 73, 1) 0%,
       rgba(40, 49, 73, 0.1) 100%
     ),
-    url(/img/ej-banner.bmp);
+    url(/Proyecto-2---Grupo-1/img/ej-banner.bmp);
   background-position: center center;
   background-size: cover;
   display: grid;
@@ -15,11 +15,14 @@
 
 .cont-info{
 max-height: em;
+text-align: left;
 }
 
 .titulo-destacada{
     font-weight: 600;
     color: var(--blanco);
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 .descripcion-destacada{
@@ -45,3 +48,15 @@ max-height: em;
     color: var(--verde);
 }
 
+
+@media (max-width: 768px) {
+    .descripcion-destacada {
+      display: none;
+    }
+    .titulo-destacada{
+        text-align: center;
+    }
+    .cont-info{
+        text-align: center;
+        }
+}
