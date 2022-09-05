@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/login.css" />
     <link rel="stylesheet" href="./css/footer.css" />
-    <link rel="stylesheet" href="./css/sliders.css">
-    <link rel="stylesheet" href="./css/banner.css">
+    <link rel="stylesheet" href="./css/sliders.css" />
+    <link rel="stylesheet" href="./css/banner.css" />
     <!-- fuente -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,9 +20,14 @@
       rel="stylesheet"
     />
     <!-- Script FontAwesome - Martin -->
-    <script src="https://kit.fontawesome.com/35882933df.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/35882933df.js"
+      crossorigin="anonymous"
+    ></script>
     <!-- SCRIPTS JS -->
     <script src="./js/login.js" defer></script>
+    <script src="./js/header.js" defer></script>
+    <script src="./js/banner.js" defer></script>
     <!-- bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -33,191 +38,138 @@
   </head>
   <body>
     <!-- HEADER START-->
-    <header id="header">
-      <nav class="navbar navbar-expand-md colorNavBar">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"
-            ><img id="img_logo" src="./img/logoPeli (2).png" alt="logo"
-          /></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <!-- /*contenedor flex*/ -->
-          <div
-            class="collapse navbar-collapse ms-1 justify-content-between"
-            id="navbarNav"
-          >
-            <!-- contenedor flex -->
-            <ul class="navbar-nav items_header">
-              <li class="nav-item mx-2">
-                <a class="nav-link" aria-current="page" href="#">Inicio</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Peliculas</a>
-              </li>
-              <li class="nav-item mx-2">
-                <a class="nav-link" href="#">Series</a>
-              </li>
-            </ul>
-            <ul class="navbar-nav items_header">
-              <!-- en modo small se visualiza el items con texto -->
-              <li class="nav-item mx-2 d-md-none">
-                <a
-                  id="login"
-                  class="nav-link botonInicio"
-                  data-bs-toggle="modal"
-                  data-bs-target="#loginModal"
-                  onclick="login()"
-                  href="#"
-                >
-                  Iniciar Sesión</a
-                >
-              </li>
-              <!--en modo tablet + se visualiza el icons de usuario -->
-              <li class="nav-item mx-2 d-none d-md-block">
-                <a
-                  id="login"
-                  class="nav-link botonInicio"
-                  data-bs-toggle="modal"
-                  data-bs-target="#loginModal"
-                  onclick="login()"
-                  href="#"
-                  ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    width="30"
-                  >
-                    <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                    <path
-                      d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c39.77 0 72 32.24 72 72S295.8 272 256 272c-39.76 0-72-32.24-72-72S216.2 128 256 128zM256 448c-52.93 0-100.9-21.53-135.7-56.29C136.5 349.9 176.5 320 224 320h64c47.54 0 87.54 29.88 103.7 71.71C356.9 426.5 308.9 448 256 448z"
-                    />
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <!-- MODAL -->
-      <div
-        id="loginModal"
-        class="modal fade"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      ></div>
-    </header>
+    <header id="header"></header>
     <!-- HEADER END -->
     <!-- MAIN START -->
     <main>
-      <!--BANNER START -->
-      <div class="cont-banner">
-        <div class="cont-info">
-          <h2 class="titulo-destacada">Top Gun: Maverick</h2>
-          <p class="descripcion-destacada">
-            Después de más de treinta años de servicio como uno de los mejores
-            aviadores de la Marina, Pete Mitchell está donde pertenece,
-            empujando los límites como un valiente piloto de pruebas y
-            esquivando el ascenso de rango que lo dejaría en tierra.
-          </p>
-          <button role="button" class="button-banner">
-            <i class="fa-solid fa-circle-play"></i>
-          </button>
-        </div>
-      </div>
-      <!--BANNER END -->
+      <div id="contenedor-banner"></div>
       <!-- Carrousel de Peliculas recomendadas -->
       <div class="m-peliculas-recomendadas m-contenedor">
         <!-- Titulo y botones -->
         <div class="m-contenedor-titulo-controles">
           <h3>Peliculas Recomendadas</h3>
-          <div class="m-indicadores">
-          </div>
+          <div class="m-indicadores"></div>
         </div>
         <!-- Contenedor Principal del Carousel -->
         <div class="m-contenedor-principal">
           <!-- Boton izquierdo -->
-          <button role="button" id="flecha-izq" class="m-flecha-izquierda"><i class="fa-solid fa-angle-left"></i></button>
+          <button role="button" id="flecha-izq" class="m-flecha-izquierda">
+            <i class="fa-solid fa-angle-left"></i>
+          </button>
           <!-- Contenedor del Carousel -->
           <div class="m-contenedor-carousel">
             <div class="m-carousel">
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/1.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/1.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/2.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/2.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/3.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/3.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/4.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/4.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/5.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/5.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/6.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/6.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/7.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/7.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/8.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/8.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/9.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/9.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/10.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/10.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/11.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/11.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/12.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/12.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/13.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/13.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/14.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/14.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/15.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/15.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/16.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/16.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/17.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/17.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/18.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/18.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/19.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/19.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/20.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/20.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/2.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/2.jpg" alt="pelicula"
+                /></a>
               </div>
             </div>
           </div>
           <!-- Boton derecho -->
-          <button role="button" id="flecha-der" class="m-flecha-derecha"><i class="fa-solid fa-angle-right"></i></button>
+          <button role="button" id="flecha-der" class="m-flecha-derecha">
+            <i class="fa-solid fa-angle-right"></i>
+          </button>
         </div>
       </div>
       <!-- Carousel END -->
@@ -226,80 +178,127 @@
         <!-- Titulo y botones -->
         <div class="m-contenedor-titulo-controles">
           <h3>Peliculas de Terror</h3>
-          <div class="indicadores-terror">
-          </div>  
+          <div class="indicadores-terror"></div>
         </div>
         <!-- Contenedor Principal del Carousel -->
         <div class="m-contenedor-principal">
           <!-- Boton izquierdo -->
-          <button role="button" id="flecha-izquierda" class="m-flecha-izquierda"><i class="fa-solid fa-angle-left"></i></button>
+          <button
+            role="button"
+            id="flecha-izquierda"
+            class="m-flecha-izquierda"
+          >
+            <i class="fa-solid fa-angle-left"></i>
+          </button>
           <!-- Contenedor del Carousel -->
           <div class="m-contenedor-carousel" id="contenedor-terror">
             <div class="m-carousel">
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/1.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/1.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/2.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/2.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/3.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/3.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/4.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/4.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/5.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/5.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/6.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/6.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/7.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/7.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/8.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/8.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/9.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/9.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/10.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/10.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/11.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/11.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/12.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/12.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/13.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/13.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/14.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/14.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/15.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/15.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/16.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/16.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/17.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/17.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/18.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/18.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/19.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/19.jpg" alt="pelicula"
+                /></a>
               </div>
               <div class="m-pelicula">
-                <a href="#"><img src="./img/imagenes slider/20.jpg" alt="pelicula"></a>
+                <a href="#"
+                  ><img src="./img/imagenes slider/20.jpg" alt="pelicula"
+                /></a>
               </div>
             </div>
           </div>
           <!-- Boton derecho -->
-          <button role="button" id="flecha-derecha" class="m-flecha-derecha"><i class="fa-solid fa-angle-right"></i></button>
+          <button role="button" id="flecha-derecha" class="m-flecha-derecha">
+            <i class="fa-solid fa-angle-right"></i>
+          </button>
         </div>
       </div>
       <!-- Carousel END -->
@@ -309,13 +308,22 @@
     <footer class="martin-footer">
       <!-- Derechos de autor - Martin -->
       <div class="martin-derechos">
-        <small>Copyright &copy; 2022 <b>Rolling Movie</b> - Todos los Derechos Reservados.</small>
+        <small
+          >Copyright &copy; 2022 <b>Rolling Movie</b> - Todos los Derechos
+          Reservados.</small
+        >
       </div>
       <!-- Redes sociales - Martin -->
       <div class="martin-social-media">
-        <a class="martin-medias" href="#"><i class="fa-brands fa-facebook"></i></a>
-        <a class="martin-medias" href="#"><i class="fa-brands fa-twitter"></i></a>
-        <a class="martin-medias" href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a class="martin-medias" href="#"
+          ><i class="fa-brands fa-facebook"></i
+        ></a>
+        <a class="martin-medias" href="#"
+          ><i class="fa-brands fa-twitter"></i
+        ></a>
+        <a class="martin-medias" href="#"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
       </div>
     </footer>
     <!-- FOOTER END -->
