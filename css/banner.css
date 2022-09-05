@@ -1,58 +1,94 @@
-.contenedor-banner {
-  height: 300px;
-  max-height: 400px; /*altura maxima del contenedor.*/
+#contenedor-banner {
+  height: 200px;
   background: linear-gradient(
       0deg,
       rgba(40, 49, 73, 1) 0%,
       rgba(40, 49, 73, 0.1) 100%
     ),
-    url(https://images.unsplash.com/photo-1523521958600-3d7aadb62b83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+    url(/Proyecto-2---Grupo-1/img/pareja.avif);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
-  align-items: center;
   justify-content: center;
-
+  flex-direction: column;
   margin-bottom: 50px;
+  padding-left: 10px;
 }
 
-.cont-info {
-  max-height: em;
+.banner-titulo {
+  margin-top: 50px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.banner-descripcion {
+  font-size: 7px;
 }
 
-.titulo-destacada {
-  font-weight: 600;
-  color: var(--blanco);
-  font-size: 17px;
+.banner-botonera {
+  margin-top: 17px;
+  display: flex;
 }
-
-.descripcion-destacada {
-  font-weight: 400;
-  color: var(--blanco);
-  max-width: 40%;
-}
-.button-banner {
-  background-color: var(--verde);
-  border: none;
+/* estilos a los dos botones - reproducir y verMas */
+.botones {
+  margin-right: 5px;
+  /* border: 1px solid var(--azulOscuro); */
+  background-color: rgba(255, 255, 255, 0.544);
+  padding: 0.1px 3px;
   border-radius: 100px;
-  padding: 15px;
-  color: var(--blanco);
-  height: 50px;
-  width: 70px;
+  font-weight: 600;
+  font-size: 7px;
+  color: black;
 }
-.button-banner:hover {
-  background-color: var(--blanco);
-  transform: scale(1.05);
-  color: var(--verde);
+
+.btn-VerMas {
+  padding-left: 0px;
+  background-color: rgba(255, 255, 255, 0.287);
+}
+
+.banner-titulo,
+.banner-descripcion {
+  color: var(--blanco);
 }
 
 /* BREAKPOINTS */
 
 /* Modo tablet */
 @media (min-width: 768px) {
+  #contenedor-banner {
+    height: 60vh;
+  }
+  .botones {
+    padding: 3px;
+    font-size: 12px;
+  }
+  .banner-titulo {
+    font-size: 19px;
+    font-weight: bold;
+  }
+  .banner-descripcion {
+    font-size: 11px;
+  }
+  .btn-VerMas {
+    padding-left: 0px;
+  }
 }
 
 /* Modo PC */
 @media (min-width: 992px) {
+  .banner-titulo {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .banner-descripcion {
+    font-size: 16px;
+  }
+  .botones {
+    padding: 4px;
+    font-size: 15px;
+  }
+  .btn-VerMas {
+    padding-left: 0px;
+  }
 }
