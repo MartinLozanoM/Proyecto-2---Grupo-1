@@ -1,0 +1,145 @@
+/* Contenedor titulo y controles */
+
+.m-contenedor-titulo-controles {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  /*VOS AGREGASTE ESTE MARGIN-BOTTOM, NO ESTABA. Fue para alejar el carousel del titulo*/
+  margin-bottom: 5px;
+
+  pointer-events: auto !important;
+}
+
+.m-contenedor-titulo-controles h3 {
+  color: #fff;
+  font-size: 15px;
+}
+
+.m-contenedor-titulo-controles .indicadores button,
+.m-contenedor-titulo-controles .indicadores-terror button {
+  background-color: #fff;
+  height: 3px;
+  width: 10px;
+  cursor: pointer;
+  border: none;
+  margin-right: 2px;
+}
+
+.m-contenedor-titulo-controles .indicadores button:hover,
+.m-contenedor-titulo-controles .indicadores button.activo,
+.m-contenedor-titulo-controles .indicadores-terror button:hover,
+.m-contenedor-titulo-controles .indicadores-terror button.activo {
+  background-color: var(--verde);
+}
+
+/* Contenedor principal y flechas */
+.m-contenedor {
+  width: 90%;
+  margin: auto;
+}
+
+.m-peliculas-recomendadas {
+  margin-bottom: 70px;
+}
+
+.m-peliculas-recomendadas .m-contenedor-principal {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 230px;
+}
+
+.m-peliculas-recomendadas .m-contenedor-principal .m-flecha-izquierda,
+.m-peliculas-recomendadas .m-contenedor-principal .m-flecha-derecha {
+  position: absolute;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 40px;
+  /* El HEIGHT original estaba en: 50% */
+  height: 100%;
+  /* Aca abajo habia un top: cal(50%-25%) para centrar el boton en medio de las img */
+  line-height: 40px;
+  /* El WIDTH original estaba en: 50px */
+  width: 25px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 500;
+  transition: 0.2s ease all;
+}
+
+.m-peliculas-recomendadas .m-contenedor-principal .m-flecha-izquierda:hover,
+.m-peliculas-recomendadas .m-contenedor-principal .m-flecha-derecha:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.m-peliculas-recomendadas .m-contenedor-principal .m-flecha-izquierda {
+  left: 0;
+}
+
+.m-peliculas-recomendadas .m-contenedor-principal .m-flecha-derecha {
+  right: 0;
+}
+
+/* Carousel */
+
+.m-peliculas-recomendadas .m-contenedor-carousel {
+  width: 100%;
+  padding: 20px 0;
+  /* AQUI EN EL MIN 35 CAMBIA EL OVERFLOW
+    antes --> overflow: hidden;
+    despues --> overflow-x: scroll;*/
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.m-peliculas-recomendadas .m-contenedor-carousel .m-carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  /* No tenia height, lo pusiste para adaptarlo en moviles */
+  height: 230px;
+}
+
+.m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula {
+  /* El min width funciona para ver el porcentaje de peliculas que se veran
+    en el carousel, tendria que estar en el 20% para mostrar 5 peliculas */
+  min-width: 50.1%;
+  transition: 0.3s ease all;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 1.5px;
+}
+
+.m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula.hover {
+  transform: scale(1.2);
+  transform-origin: center;
+}
+
+.m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula img {
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+}
+
+/* HASTA AQUI EN EL VIDEO /en el minuto 32/ TE ACLARA QUE SI CAMBIAS EL TAMAÑO DE LAS IMAGENES COMO ESTAS HACIENDO
+PARA HACER EL RESPONSIVE, SE TE VA A COMPLICAR LAS COSAS EN JS, SI NO TE FUNCIONA ALGO VOLVES A PONER TODO COMO 
+DICEN LOS COMENTARIOS ASI FUNCIONE*/
+
+/* -------- MEDIA QUERIES --------------*/
+
+/* Tablets */
+@media screen and (min-width: 768px) {
+  .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula {
+    min-width: 25%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula {
+    min-width: 20%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula {
+    min-width: 10%;
+  }
+}

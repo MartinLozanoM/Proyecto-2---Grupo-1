@@ -1,22 +1,33 @@
-/* ESTILOS A LOS ITEMS NAVEGABLES */
-
-.nav-item a {
-  color: var(--verde); /*color a items navegables*/
+#header {
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 505;
+  /* animacion */
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
 }
 
-.colorNavBar {
+.color_Header {
   background-color: var(--azulOscuro);
 }
 
-/* tamaño de letra en items navegables */
-.items_header li a {
-  font-size: 13px;
+.navBar {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* ESTILOS AL LOGO */
-#img_logo {
-  height: 35px;
-  width: 95px;
+#img_menu {
+  height: 25px;
+  width: 25px;
+}
+
+.divLogo {
+  color: var(--azulOscuro);
+  font-weight: 600;
+  margin-left: 20px;
 }
 
 /* breakpoints */
@@ -36,5 +47,8 @@
 @media (min-width: 992px) {
   .items_header li a {
     font-size: 16px;
+  }
+  #header {
+    height: 100px;
   }
 }
