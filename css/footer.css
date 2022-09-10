@@ -27,17 +27,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px 0px;
+    margin-bottom: 10px;
 }
 
 .martin-medias {
-    border-radius: 25px;
-    border: 1px solid var(--verde);
-    text-align: center;
-    width: 36px;
-    height: 36px;
-    padding: 5px;
-    margin: 5px;
     text-decoration: none;
 }
 
@@ -45,46 +38,23 @@ body {
     filter: brightness(130%);
 }
 
-.fa-facebook {
+.martin-medias i {
     color: var(--verde);
     text-decoration: none;
-}
-.fa-instagram{
-    color: var(--verde);
-    text-decoration: none;
-}
-.fa-twitter{
-    color: var(--verde);
-    text-decoration: none;
+    border: 1px solid;
+    border-radius: 25px;
+    padding: 10px;
+    margin: 5px;
 }
 /* Tablets */
 @media screen and (min-width: 768px) {
-    .martin-footer {
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        padding: 5px 0px;
-    }
     .martin-social-media i {
         font-size: 18px;
     }
-    .martin-medias {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .martin-derechos {
-        font-size: 16px;
-    }
 }
-/* Pcs */
+/* Laptops */
 @media screen and (min-width: 1024px) {
     .martin-social-media i {
-        font-size: 20px;
-    }
-    .martin-derechos {
         font-size: 20px;
     }
 }
