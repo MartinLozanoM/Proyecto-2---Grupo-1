@@ -15,35 +15,31 @@ const header = document.getElementById("header");
 
 const navBar = document.createElement("nav");
 const divLogo = document.createElement("div");
-const divMenu = document.createElement("div");
+
 const divMenu_Oculto = document.createElement("div");
 const cont_Menu_Oculto = document.createElement("div");
 const navBar_Menu_Oculto = document.createElement("nav");
+
 // Opciones del menu oculto
 const opcionA = document.createElement("a");
 const opcionB = document.createElement("a");
 const opcionC = document.createElement("a");
 const opcionD = document.createElement("a");
 
-const label_boton = document.createElement("label");
-label_boton.setAttribute("for", "btn_menu");
-// asocio el label y el input check
-const inputCheck = document.createElement("input");
-inputCheck.type = "checkbox";
-inputCheck.setAttribute("id", "btn_menu");
-
 // agrego clase a los elementos creados.
 navBar.className = "navBar";
-divLogo.className = "divLogo";
-divMenu.setAttribute("id", "div_BotonMenu");
+divLogo.className = "contenedor-logoDeMenu";
+
 divMenu_Oculto.setAttribute("id", "container-menu");
 cont_Menu_Oculto.className = "cont-menu";
 
-// Inyecto còdigo a los elementos creados.
-label_boton.innerHTML = `<img id="img_menu" src="./img/botonHam.png" alt="logo"
-/>`;
+divLogo.innerHTML = `
+<label for="btn_menu">
+<img id="img_logo" src="./img/botonHam.png" alt="logo" />
+<img id="img_logoOculto" class="d-none" src="./img/camara.png" alt="logo" />
+</label>
+<input id="btn_menu" type="checkbox"></input>`;
 
-divLogo.innerHTML = `<h4></h4>`;
 opcionA.innerHTML = "Inicio";
 opcionB.innerHTML = "Peliculas";
 opcionC.innerHTML = "Series";
@@ -52,17 +48,14 @@ opcionD.innerHTML = "Ingresar al Sistema";
 opcionA.setAttribute("href", "#");
 opcionB.setAttribute("href", "#");
 opcionC.setAttribute("href", "#");
-opcionD.setAttribute("href", "./administracion.html");
+// opcionD.setAttribute("href", "./administracion.html");
 // opcionD.setAttribute("type", "button");
 // opcionD.setAttribute("data-bs-toggle", "modal");
 // opcionD.setAttribute("data-bs-target", "loginModal");
 // opcionD.setAttribute("onClick", "login()");
 
 // Unir todo
-divMenu.appendChild(inputCheck);
-divMenu.appendChild(label_boton);
 navBar.appendChild(divLogo);
-navBar.appendChild(divMenu);
 
 // union del menu oculto
 
@@ -90,10 +83,18 @@ window.addEventListener("scroll", () => {
   }
 });
 
-divMenu.addEventListener("click", () => {
+divLogo.addEventListener("click", () => {
+  const logo = document.getElementById("img_logo");
+  const logoOculto = document.getElementById("img_logoOculto");
+  const inputCheck = document.getElementById("btn_menu");
+
   if (inputCheck.checked) {
     divMenu_Oculto.className = "d-block";
+    logo.className = "d-none";
+    logoOculto.className = "d-block";
   } else {
     divMenu_Oculto.className = "d-none";
+    logo.className = "d-block";
+    logoOculto.className = "d-none";
   }
 });

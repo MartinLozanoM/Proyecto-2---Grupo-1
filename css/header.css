@@ -16,16 +16,28 @@
 header .navBar {
   height: 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   position: relative;
 }
 
 /* ESTILOS AL LOGO */
-#img_menu {
+
+#img_logo {
   height: 30px;
   width: 25px;
-  cursor: pointer;
+  margin-right: 5px;
+  display: block;
+}
+#img_logoOculto {
+  height: 46px;
+  width: 48px;
+  margin-right: 5px;
+  display: block;
+}
+
+.contenedor-logoDeMenu {
+  margin-top: 10px;
 }
 
 /* MENU LATERAL */
@@ -39,8 +51,8 @@ header .navBar {
   /* background: rgba(0, 0, 0, 0.5); */
   width: 100%;
   height: 50vh;
-  top: 50px;
-  left: 35vw;
+  top: 40px;
+  left: 38vw;
   transition: all 500ms ease;
 }
 
@@ -48,9 +60,9 @@ header .navBar {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 200px;
+  max-width: 165px;
   background: #1f1f1fdb;
-  height: 38vh;
+  height: 31.5vh;
   /* position: relative; */
   transition: all 500ms ease;
   /* border-radius: 10%; */
@@ -62,7 +74,7 @@ header .navBar {
 .cont-menu nav a {
   display: block;
   text-decoration: none;
-  padding: 20px;
+  padding: 15px;
   color: var(--blanco) !important;
   border-left: 3px solid transparent;
   transition: all 400ms ease;
@@ -94,12 +106,17 @@ header .navBar {
   /* movimiento del menu oculto */
   #container-menu {
     top: 40px;
-    left: 73vw;
+    left: 74vw;
   }
   .cont-menu {
-    /* position: relative; */
-    font-size: 13px;
-    height: 39.1vh;
+    position: relative;
+    font-size: 12px;
+    height: 32vh;
+  }
+
+  #img_logo {
+    height: 31px;
+    width: 26px;
   }
 }
 
@@ -110,17 +127,31 @@ header .navBar {
   .navBar {
     height: 60px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
+  #img_logo {
+    height: 36px;
+    width: 33px;
+  }
+
+  #img_logoOculto {
+    margin-top: 5px;
+    height: 60px;
+    width: 60px;
+  }
+
   /* movimiento del menu oculto */
   #container-menu {
-    top: 40px;
-    left: 76vw;
+    top: 48px;
+    left: 75vw;
   }
   .cont-menu {
-    max-width: 230px;
-    height: 33vh;
-    /* position: relative; */
-    font-size: 18px;
+    max-width: 210px;
+    height: 28vh;
+    font-size: 16px;
+  }
+
+  .cont-menu nav a {
+    padding: 16px;
   }
 }
