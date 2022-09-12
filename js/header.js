@@ -88,7 +88,7 @@ window.addEventListener("scroll", () => {
     navBar.className = "navBar";
   }
 });
-
+divMenu_Oculto.className = "d-none";
 divLogo.addEventListener("click", () => {
   const logo = document.getElementById("img_logo");
   const logoOculto = document.getElementById("img_logoOculto");

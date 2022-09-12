@@ -65,7 +65,7 @@
   width: 25px;
   color: #fff;
   cursor: pointer;
-  z-index: 500;
+  z-index: 1;
   transition: 0.2s ease all;
 }
 

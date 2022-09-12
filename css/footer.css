@@ -3,19 +3,23 @@
   font-family: "Noto Sans Tamil", sans-serif;
 }
 
-body {
+/* body {
   margin: 0px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-}
+  justify-content: space-between;
+  /* min-height: 100vh; */
 
 .martin-footer {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   padding-top: 20px;
   background-color: var(--azulOscuro);
   display: flex;
   flex-direction: column;
-  margin-top: auto;
+  /* margin-top: auto; */
 }
 
 .martin-derechos {
