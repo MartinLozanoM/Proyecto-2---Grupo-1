@@ -1,13 +1,13 @@
 // MODAL
 // Modal del login
-const modal = document.createElement("div");
-modal.className = "modal fade";
-modal.setAttribute("id", "loginModal");
-modal.setAttribute("data-bs-backdrop", "static");
-modal.setAttribute("data-bs-keyboard", "false");
-modal.setAttribute("tabindex", "-1");
-modal.setAttribute("aria-labelledby", "staticBackdropLabel");
-modal.setAttribute("aria-hidden", "true");
+// const modal = document.createElement("div");
+// modal.className = "modal fade";
+// modal.setAttribute("id", "loginModal");
+// modal.setAttribute("data-bs-backdrop", "static");
+// modal.setAttribute("data-bs-keyboard", "false");
+// modal.setAttribute("tabindex", "-1");
+// modal.setAttribute("aria-labelledby", "staticBackdropLabel");
+// modal.setAttribute("aria-hidden", "true");
 
 // obtengo al header
 const header = document.getElementById("header");
@@ -48,11 +48,17 @@ opcionD.innerHTML = "Ingresar al Sistema";
 opcionA.setAttribute("href", "#");
 opcionB.setAttribute("href", "#");
 opcionC.setAttribute("href", "#");
-// opcionD.setAttribute("href", "./administracion.html");
-// opcionD.setAttribute("type", "button");
-// opcionD.setAttribute("data-bs-toggle", "modal");
-// opcionD.setAttribute("data-bs-target", "loginModal");
-// opcionD.setAttribute("onClick", "login()");
+
+opcionD.setAttribute("type", "button");
+opcionD.setAttribute("data-bs-toggle", "modal");
+opcionD.setAttribute("data-bs-target", "#loginModal");
+opcionD.setAttribute("onClick", "login()");
+
+opcionD.addEventListener("click", () => ocultarMenu());
+
+const ocultarMenu = () => {
+  divMenu_Oculto.className = "d-none";
+};
 
 // Unir todo
 navBar.appendChild(divLogo);
@@ -70,7 +76,7 @@ divMenu_Oculto.appendChild(cont_Menu_Oculto);
 //
 // unir al header
 navBar.appendChild(divMenu_Oculto);
-navBar.appendChild(modal);
+// navBar.appendChild(modal);
 header.appendChild(navBar);
 // header.appendChild(divMenu_Oculto);
 
