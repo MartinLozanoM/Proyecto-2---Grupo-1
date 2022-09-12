@@ -1,10 +1,27 @@
+main {
+  /* margin-top: 10vh; */
+}
+
+#titulo_admin {
+  font-size: 15px;
+  text-align: center;
+  font-weight: 600;
+  font-weight: bold;
+  color: var(--azulOscuro);
+  margin-bottom: 50px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--verde);
+  border-top: 1px solid var(--verde);
+  background-color: rgba(133, 176, 205, 0.324);
+}
+
 .contenedorFlexilla_grilla {
   width: 100%;
-  height: 90vh;
+  /* height: 90vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10vh 0;
+  /* margin: 20vh 0; */
   /* justify-content: center; */
 }
 
@@ -43,6 +60,9 @@
   /* aumento tamaño de la grilla */
   .contenedorGrilla {
     width: 600px;
+  }
+  #titulo_admin {
+    font-size: 22px;
   }
 }
 

@@ -435,6 +435,9 @@ const grilla = document.createElement("table");
 const encabezado_grilla = document.createElement("thead");
 const cuerpo_grilla = document.createElement("tbody");
 
+const div_titulo = document.createElement("div");
+div_titulo.innerHTML = `<h2 id="titulo_admin">Adminitración de Peliculas</h2>`;
+
 // creo el contenedor de botones y el  boton de insert
 const contenedorBotonera = document.createElement("div");
 const btn_nuevo = document.createElement("button");
@@ -472,7 +475,8 @@ contenedorBotonera.append(btn_nuevo); //agrego 'boton insert' en div botonera
 contenedorGrilla.append(contenedorBotonera); //inserto div botonera
 contenedorGrilla.append(grilla); //inserto la grilla en su contenedor
 divFlexible.append(contenedorGrilla); //inserto el contenedor de grilla en el div flex
-contenedor.appendChild(divFlexible);
+contenedor.append(div_titulo);
+contenedor.append(divFlexible);
 // document.body.appendChild(contenedor);
 
 // LOGICA PARA LA GRILLA
