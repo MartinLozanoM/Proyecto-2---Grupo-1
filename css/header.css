@@ -125,7 +125,7 @@ header .navBar {
     font-size: 16px;
   }
   .navBar {
-    height: 60px;
+    min-height: 55px;
     display: flex;
     /* justify-content: space-between; */
   }
@@ -142,7 +142,7 @@ header .navBar {
 
   /* movimiento del menu oculto */
   #container-menu {
-    top: 48px;
+    top: 54px;
     left: 75vw;
   }
   .cont-menu {
