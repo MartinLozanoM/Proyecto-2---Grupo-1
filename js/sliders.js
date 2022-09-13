@@ -12,7 +12,7 @@ divCarouselRecomendadas.className = "m-carousel";
 for (let i = 1; i < 16; i++) {
   const divPelicula = document.createElement("div");
   divPelicula.className = "m-pelicula";
-  divPelicula.innerHTML = `<a href="#"><img src="./img/imagenes slider/${i}.jpg" alt="pelicula"></a>`;
+  divPelicula.innerHTML = `<a href="./error404.html"><img src="./img/imagenes slider/${i}.jpg" alt="pelicula"></a>`;
   divCarouselRecomendadas.appendChild(divPelicula);
 }
 
@@ -30,7 +30,7 @@ divCarouselTerror.className = "m-carousel";
 for (let i = 16; i < 31; i++) {
   const divPelicula = document.createElement("div");
   divPelicula.className = "m-pelicula";
-  divPelicula.innerHTML = `<a href="#"><img src="./img/terror/${i}.jpg" alt="pelicula"></a>`;
+  divPelicula.innerHTML = `<a href="./error404.html"><img src="./img/terror/${i}.jpg" alt="pelicula"></a>`;
   divCarouselTerror.appendChild(divPelicula);
 }
 
@@ -48,7 +48,7 @@ divCarouselComedia.className = "m-carousel";
 for (let i = 31; i < 45; i++) {
   const divPelicula = document.createElement("div");
   divPelicula.className = "m-pelicula";
-  divPelicula.innerHTML = `<a href="#"><img src="./img/comedia/${i}.jpg" alt="pelicula"></a>`;
+  divPelicula.innerHTML = `<a href="./error404.html"><img src="./img/comedia/${i}.jpg" alt="pelicula"></a>`;
   divCarouselComedia.appendChild(divPelicula);
 }
 
@@ -141,7 +141,6 @@ flechaIzquierdaComedia.addEventListener("click", () => {
 // };
 // ! --------------- Recomendadas ------------------------
 let numeroPaginasRecomendadas = 0;
-
 if (window.screen.availWidth === 320) {
   numeroPaginasRecomendadas = Math.ceil(peliculas.length / 2);
 } else if (window.screen.availWidth === 768) {
