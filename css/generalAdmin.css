@@ -1,0 +1,27 @@
+/* colores */
+:root {
+  --azulOscuro: #283149;
+  --violetaMedio: #404b69;
+  --verde: #00818a;
+  --blanco: #dbedf3;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans Tamil", sans-serif;
+}
+
+body {
+  background-color: var(--blanco) !important;
+}
+
+.FuenteTitulo {
+  font-family: "Noto Sans Tamil", sans-serif;
+  font-weight: 600;
+}
+
+main {
+  margin-bottom: 20vh;
+}

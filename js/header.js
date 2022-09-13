@@ -1,14 +1,3 @@
-// MODAL
-// Modal del login
-// const modal = document.createElement("div");
-// modal.className = "modal fade";
-// modal.setAttribute("id", "loginModal");
-// modal.setAttribute("data-bs-backdrop", "static");
-// modal.setAttribute("data-bs-keyboard", "false");
-// modal.setAttribute("tabindex", "-1");
-// modal.setAttribute("aria-labelledby", "staticBackdropLabel");
-// modal.setAttribute("aria-hidden", "true");
-
 // obtengo al header
 const header = document.getElementById("header");
 // creo los elementos necesarios para el navBar
@@ -24,7 +13,7 @@ const navBar_Menu_Oculto = document.createElement("nav");
 const opcionA = document.createElement("a");
 const opcionB = document.createElement("a");
 const opcionC = document.createElement("a");
-const opcionD = document.createElement("a");
+const opcionD = document.createElement("button");
 
 // agrego clase a los elementos creados.
 navBar.className = "navBar";
@@ -49,10 +38,12 @@ opcionA.setAttribute("href", "#");
 opcionB.setAttribute("href", "#");
 opcionC.setAttribute("href", "#");
 
-opcionD.setAttribute("type", "button");
+// opcionD.setAttribute("type", "button");
+opcionD.className = "botonSistema";
 opcionD.setAttribute("data-bs-toggle", "modal");
 opcionD.setAttribute("data-bs-target", "#loginModal");
-opcionD.setAttribute("onClick", "login()");
+
+// opcionD.setAttribute("onClick", "cargarModalFormulario()");
 
 opcionD.addEventListener("click", () => ocultarMenu());
 

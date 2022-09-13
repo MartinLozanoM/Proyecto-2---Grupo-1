@@ -1,5 +1,5 @@
 main {
-  /* margin-top: 10vh; */
+  margin-top: 10vh;
 }
 
 #titulo_admin {
@@ -46,8 +46,8 @@ main {
 }
 
 /* ESTILOS A LAS ACCIONES DE GRILLA */
-.botonNuevo {
-  padding: 2px;
+.boton {
+  padding: 10px;
   /* margin: 10px; */
   border: none;
   background-color: transparent;

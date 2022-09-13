@@ -435,22 +435,30 @@ const grilla = document.createElement("table");
 const encabezado_grilla = document.createElement("thead");
 const cuerpo_grilla = document.createElement("tbody");
 
-const div_titulo = document.createElement("div");
-div_titulo.innerHTML = `<h2 id="titulo_admin">Adminitración de Peliculas</h2>`;
+// const div_titulo = document.createElement("div");
+// div_titulo.innerHTML = `<h2 id="titulo_admin">Adminitración de Peliculas</h2>`;
 
 // creo el contenedor de botones y el  boton de insert
 const contenedorBotonera = document.createElement("div");
-const btn_nuevo = document.createElement("button");
+const btn_new = document.createElement("button");
+const btn_update = document.createElement("button");
+const btn_delete = document.createElement("button");
+const btn_destacada = document.createElement("button");
 // Agrego clases a la botonera
 contenedorBotonera.className = "d-flex justify-content-end contenedorBotonera";
-btn_nuevo.className = "botonNuevo";
-btn_nuevo.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-</svg>`;
+btn_new.className = "boton";
+btn_delete.className = "boton";
+btn_update.className = "boton";
+btn_destacada.className = "boton";
+
+btn_new.innerHTML = `<i class="bi bi-plus-circle-fill"></i>`;
+btn_update.innerHTML = `<i class="bi bi-pencil-square"></i>`;
+btn_delete.innerHTML = `<i class="bi bi-trash-fill"></i>`;
+btn_destacada.innerHTML = `<i class="bi bi-bookmark-star-fill"></i>`;
 
 // Agrego clases a la grilla
 grilla.className =
-  "table grilla table-striped table-hover table-bordered table-sm";
+  "table grilla table-striped table-hover table-bordered border-dark table-sm";
 divFlexible.className = "contenedorFlexilla_grilla";
 encabezado_grilla.className = "encabezado_grilla";
 cuerpo_grilla.className = "cuerpo_grilla";
@@ -460,22 +468,59 @@ contenedorGrilla.className = "contenedorGrilla";
 // El encabezado siempre es fijo
 encabezado_grilla.innerHTML = `
 <tr>
-<th scope="col">Id</th>
+
 <th scope="col">Pelicula</th>
 <th scope="col">Categoria</th>
 </tr>`;
 
-/* <th scope="col">Publicado</th>
-<th scope="col">Acciones</th> */
+// MODAL PARA INSERTAR PELI
+const divModalAdmin = document.createElement("div");
+divModalAdmin.className = "modal fade";
+divModalAdmin.setAttribute("id", "modal_BtnNew");
+divModalAdmin.setAttribute("data-bs-backdrop", "static");
+divModalAdmin.setAttribute("data-bs-keyboard", "false");
+divModalAdmin.setAttribute("tabindex", "-1");
+divModalAdmin.setAttribute("aria-labelledby", "staticBackdropLabel");
+divModalAdmin.setAttribute("aria-hidden", "true");
+
+divModalAdmin.innerHTML = `
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    ...
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Understood</button>
+  </div>
+</div>
+</div>
+`;
+
+// le agrego los att para modal a el boton nuevo
+btn_new.setAttribute("data-bs-toggle", "modal");
+btn_new.setAttribute("data-bs-target", "#modal_BtnNew");
+
+// MODAL PARA ACTUALIZAR PELI
+// btn_update.setAttribute("data-bs-toggle", "modal");
+// btn_update.setAttribute("data-bs-target", "#modal_BtnUpdate");
 
 // Agrego los nodos creados a la grilla
 grilla.append(encabezado_grilla);
 grilla.append(cuerpo_grilla);
-contenedorBotonera.append(btn_nuevo); //agrego 'boton insert' en div botonera
+contenedorBotonera.append(btn_new); //agrego 'boton insert' en div botonera
+contenedorBotonera.append(btn_update);
+contenedorBotonera.append(btn_delete);
+contenedorBotonera.append(btn_destacada);
+contenedorGrilla.append(divModalAdmin);
 contenedorGrilla.append(contenedorBotonera); //inserto div botonera
 contenedorGrilla.append(grilla); //inserto la grilla en su contenedor
 divFlexible.append(contenedorGrilla); //inserto el contenedor de grilla en el div flex
-contenedor.append(div_titulo);
+// contenedor.append(div_titulo);
 contenedor.append(divFlexible);
 // document.body.appendChild(contenedor);
 
@@ -484,7 +529,6 @@ const cargarGrilla = () => {
   listaPeliculas.forEach((p) => {
     let fila = document.createElement("tr");
     fila.innerHTML = `
-    <th scope="row">${p.id}</th>
     <td>${p.nombre}</td>
     <td>${p.categoria}</td>
     `;

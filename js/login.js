@@ -4,28 +4,36 @@ const USERS = [
   { user: "valentina", password: "valentina" },
 ];
 
-// obtengo el div modal de inicio sesion
-const modal = document.getElementById("loginModal");
-// creo el div para contener el modal.
-const contenidoModal = document.createElement("div");
-// Le poongo clase al contenidoModal creado
-contenidoModal.className = "modal-dialog tamañoModal-md";
+// Obtengo el id del header
+const modalHeader = document.getElementById("modal");
 
-// inyecto la estructura del contenidoModal de inicio sesion
-contenidoModal.innerHTML = `
-<div class="modal-content">
-<div class="modal-header">
-  <img id="img_logoModal" src="./img/logoPeli (2).png" alt="logoModal"/>
-  <h6 class="m-0">Rolling Movie</h6>
-  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
-<div class="modal-body p-3" id= "divFormulario"></div>
-<div class="modal-footer" id="estadoDeLogueo"></div>
+// CREO EL MODAL PARA LOGIN
+const divModal = document.createElement("div");
+divModal.className = "modal fade";
+divModal.setAttribute("id", "loginModal");
+divModal.setAttribute("data-bs-backdrop", "static");
+divModal.setAttribute("data-bs-keyboard", "false");
+divModal.setAttribute("tabindex", "-1");
+divModal.setAttribute("aria-labelledby", "staticBackdropLabel");
+divModal.setAttribute("aria-hidden", "true");
+
+// inyecto la estructura del modal de inicio sesion
+divModal.innerHTML = `
+<div class="modal-dialog tamañoModal-md">
+  <div class="modal-content">
+  <div class="modal-header">
+    <img id="img_logoModal" src="./img/logoPeli (2).png" alt="logoModal"/>
+    <h6 class="m-0">Rolling Movie</h6>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body p-3" id="divFormulario"></div>
+  <div class="modal-footer" id="estadoDeLogueo"></div>
+  </div>
 </div>
 `;
 
-// agrego al modal del html
-modal.appendChild(contenidoModal);
+// inyecto el modal en el header
+modalHeader.appendChild(divModal);
 
 // creo el elemento <form> para que el usuario ingrese sus datos
 const form = document.createElement("form");
@@ -34,7 +42,10 @@ const divForm = document.createElement("div"); /*contenedor del form*/
 divForm.className = "mb-3";
 
 // creo modal para login
-const login = () => {
+const cargarModalFormulario = () => {
+  // obtengo el id del div body del modal
+  const modalFormulario = document.getElementById("divFormulario");
+
   // inserto código al contenedor del form
   divForm.innerHTML = `<label for="usuario" class="form-label">Usuario</label>
   <input type="text" required maxlength="20" class="form-control" id="input_usuario">
@@ -50,12 +61,10 @@ const login = () => {
     `;
   // Inserto el contenedor al formulario.
   form.append(divForm);
-  // obtengo el id del div del modal
-  const modalFormulario = document.getElementById("divFormulario");
   // inserto en 'divFormulario' el form creado.
   modalFormulario.append(form);
 };
-
+cargarModalFormulario();
 // // LOGICA DEL BOTON ENTRAR del login (validacion de ingreso)
 
 const entrarAdmin = () => {
