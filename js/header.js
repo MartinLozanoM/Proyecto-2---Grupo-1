@@ -1,7 +1,6 @@
 // obtengo al header
 const header = document.getElementById("header");
 // creo los elementos necesarios para el navBar
-
 const navBar = document.createElement("nav");
 const divLogo = document.createElement("div");
 
@@ -38,18 +37,7 @@ opcionA.setAttribute("href", "#");
 opcionB.setAttribute("href", "#");
 opcionC.setAttribute("href", "#");
 
-// opcionD.setAttribute("type", "button");
 opcionD.className = "botonSistema";
-opcionD.setAttribute("data-bs-toggle", "modal");
-opcionD.setAttribute("data-bs-target", "#loginModal");
-
-// opcionD.setAttribute("onClick", "cargarModalFormulario()");
-
-opcionD.addEventListener("click", () => ocultarMenu());
-
-const ocultarMenu = () => {
-  divMenu_Oculto.className = "d-none";
-};
 
 // Unir todo
 navBar.appendChild(divLogo);
@@ -64,7 +52,6 @@ navBar_Menu_Oculto.appendChild(opcionD);
 cont_Menu_Oculto.appendChild(navBar_Menu_Oculto);
 divMenu_Oculto.appendChild(cont_Menu_Oculto);
 
-//
 // unir al header
 navBar.appendChild(divMenu_Oculto);
 // navBar.appendChild(modal);
@@ -95,3 +82,63 @@ divLogo.addEventListener("click", () => {
     logoOculto.className = "d-none";
   }
 });
+
+// MODAL PARA LOGIN en opcion D 'Ingresar al sistema'
+
+// Obtengo el id del header
+const modalHeader = document.getElementById("modal");
+
+// CREO EL MODAL PARA LOGIN
+const divModal = document.createElement("div");
+divModal.className = "modal fade";
+divModal.setAttribute("id", "login");
+divModal.setAttribute("data-bs-backdrop", "static");
+divModal.setAttribute("data-bs-keyboard", "false");
+divModal.setAttribute("tabindex", "-1");
+divModal.setAttribute("aria-labelledby", "staticBackdropLabel");
+divModal.setAttribute("aria-hidden", "true");
+
+// inyecto la estructura del modal de inicio sesion
+divModal.innerHTML = `
+<div class="modal-dialog tamañoModal-md">
+  <div class="modal-content">
+  <div class="modal-header">
+    <img id="img_logoModal" src="./img/logoPeli (2).png" alt="logoModal"/>
+    <h6 class="m-0">Rolling Movie</h6>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body p-3" id="divFormulario">
+  <form>
+  <div class="mb-3">
+  <label for="usuario" class="form-label">Usuario</label>
+  <input type="text" required maxlength="20" class="form-control" id="input_usuario">
+    <div class="mb-3">
+    <label for="password_Usuario" class="form-label">Contraseña</label>
+    <input type="password" required maxlength="20" class="form-control" id="input_password" aria-describedby="infoAUsuario">
+    </div>
+    <div id="infoAUsuario" class="infoUsuario-login">Recuperar contraseña</div>
+    </div>
+    <div class="mt-2">
+    <button type="button" id="botonEntrar" onClick="entrarAdmin()" class="btn-entrar w-100">Entrar</button>
+    </div>
+  </div>
+  </form>
+  </div>
+  <div class="modal-footer" id="estadoDeLogueo"></div>
+  </div>
+</div>
+`;
+
+// inyecto el modal en el header
+modalHeader.append(divModal);
+
+// Configuro el modal en la opcionD
+
+opcionD.setAttribute("data-bs-toggle", "modal");
+opcionD.setAttribute("data-bs-target", "#login");
+
+opcionD.addEventListener("click", () => ocultarMenu());
+
+const ocultarMenu = () => {
+  divMenu_Oculto.className = "d-none";
+};

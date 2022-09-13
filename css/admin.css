@@ -53,6 +53,45 @@ main {
   background-color: transparent;
 }
 
+/* ESTILOS AL FORM */
+.actions {
+  display: flex;
+}
+.actions i {
+  margin: 2px;
+}
+.botonNew {
+  border: 1px dotted var(--azulOscuro); /* border: none; */
+  background-color: #28314930;
+  color: var(--azulOscuro);
+  font-size: bold;
+  padding: 2px;
+  margin: 5px 0;
+  font-size: 12px;
+}
+/* estilos al modal */
+#header_modal {
+  background-color: var(--blanco);
+  color: var(--verde);
+}
+#header_modal h5 {
+  font-weight: 600;
+  font-weight: bold;
+}
+.btn_modal_admin {
+  border: 0.5px solid var(--blanco);
+  padding: 8px;
+  color: var(--verde);
+  background-color: var(--blanco);
+}
+.btn_modal_admin:hover {
+  background-color: var(--verde);
+  color: var(--blanco);
+  cursor: pointer;
+}
+.content_modal {
+  border: 2px solid var(--verde) !important;
+}
 /* /////////////////BREAKPOINTS */
 
 /* modo tablet */
@@ -63,6 +102,11 @@ main {
   }
   #titulo_admin {
     font-size: 22px;
+  }
+  .form_Admin .destacada {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
   }
 }
 

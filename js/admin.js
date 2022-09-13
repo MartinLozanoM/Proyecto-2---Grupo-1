@@ -446,15 +446,9 @@ const btn_delete = document.createElement("button");
 const btn_destacada = document.createElement("button");
 // Agrego clases a la botonera
 contenedorBotonera.className = "d-flex justify-content-end contenedorBotonera";
-btn_new.className = "boton";
-btn_delete.className = "boton";
-btn_update.className = "boton";
-btn_destacada.className = "boton";
+btn_new.className = "botonNew";
 
-btn_new.innerHTML = `<i class="bi bi-plus-circle-fill"></i>`;
-btn_update.innerHTML = `<i class="bi bi-pencil-square"></i>`;
-btn_delete.innerHTML = `<i class="bi bi-trash-fill"></i>`;
-btn_destacada.innerHTML = `<i class="bi bi-bookmark-star-fill"></i>`;
+btn_new.innerHTML = `AGREGAR <i class="bi bi-plus"></i>`;
 
 // Agrego clases a la grilla
 grilla.className =
@@ -468,9 +462,9 @@ contenedorGrilla.className = "contenedorGrilla";
 // El encabezado siempre es fijo
 encabezado_grilla.innerHTML = `
 <tr>
-
 <th scope="col">Pelicula</th>
 <th scope="col">Categoria</th>
+<th scope="col"></th>
 </tr>`;
 
 // MODAL PARA INSERTAR PELI
@@ -483,57 +477,210 @@ divModalAdmin.setAttribute("tabindex", "-1");
 divModalAdmin.setAttribute("aria-labelledby", "staticBackdropLabel");
 divModalAdmin.setAttribute("aria-hidden", "true");
 
-divModalAdmin.innerHTML = `
-<div class="modal-dialog">
-<div class="modal-content">
-  <div class="modal-header">
-    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-  </div>
-  <div class="modal-body">
-    ...
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-    <button type="button" class="btn btn-primary">Understood</button>
-  </div>
-</div>
-</div>
-`;
-
 // le agrego los att para modal a el boton nuevo
 btn_new.setAttribute("data-bs-toggle", "modal");
 btn_new.setAttribute("data-bs-target", "#modal_BtnNew");
 
 // MODAL PARA ACTUALIZAR PELI
-// btn_update.setAttribute("data-bs-toggle", "modal");
-// btn_update.setAttribute("data-bs-target", "#modal_BtnUpdate");
+const divModalAdmin_upd = document.createElement("div");
+divModalAdmin_upd.className = "modal fade";
+divModalAdmin_upd.setAttribute("id", "modal_BtnUpdate");
+divModalAdmin_upd.setAttribute("data-bs-backdrop", "static");
+divModalAdmin_upd.setAttribute("data-bs-keyboard", "false");
+divModalAdmin_upd.setAttribute("tabindex", "-1");
+divModalAdmin_upd.setAttribute("aria-labelledby", "staticBackdropLabel_2");
+divModalAdmin_upd.setAttribute("aria-hidden", "true");
+
+divModalAdmin_upd.innerHTML = `
+<div class="modal-dialog">
+<div class="modal-content content_modal">
+  <div id="header_modal" class="modal-header">
+    <img id="img_logoModal" src="./img/logoPeli (2).png" alt="logoModal"/>
+    <h5 class="modal-title" id="staticBackdropLabel">Editar Pelicula</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body body_Peliculas">
+  <form class="row g-3  form_Admin">
+      <div class="col-12 col-md-4">
+        <label for="id_edit" class="form-label">ID</label>
+        <input type="number" id="id_edit" class="form-control" placeholder="Id de pelicula" required>
+      </div>
+      <div class="col-12 col-md-8">
+        <label for="pelicula_edit" class="form-label">Pelicula</label>
+        <input type="text" class="form-control" id="pelicula_edit" placeholder="Ingresá nombre de la pelicula" required>
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="categoria_edit" class="form-label">Categoria</label>
+        <select class="form-select" id="categoria_edit" required>
+        <option selected></option>
+        <option value="Comedia">Comedia</option>
+        <option value="Terror">Terror</option>
+        <option value="Todos">Todos</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-6 destacada">
+        <label for="destacar_edit" class="form-check-label">Pelicula destacada
+        <input type="checkbox" class="form-check-input" id="destacar_edit">
+        </label>
+      </div>
+      <div class="col-12">
+        <label for="descripcion_edit" class="form-label">Descripción</label>
+        <textarea class="form-control" id="descripcion_edit" rows="3" placeholder="Ingresá descripción"
+        required>
+        </textarea>
+      </div>
+      <div class="col-12">
+      <label for="url_imagen" class="form-label">Url de Imagen</label>
+      <input type="text" class="form-control" id="url_imagen" placeholder="Ingresá url de imagen" required>
+    </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn_modal_admin">Guardar</button>
+    <button type="button" class="btn_modal_admin" data-bs-dismiss="modal">Cancelar</button>
+  </div>
+</div>
+</div>
+`;
+// insert
+divModalAdmin.innerHTML = `
+<div class="modal-dialog">
+<div class="modal-content content_modal">
+  <div id="header_modal" class="modal-header">
+    <img id="img_logoModal" src="./img/logoPeli (2).png" alt="logoModal"/>
+    <h5 class="modal-title" id="staticBackdropLabel_2">Agregar Pelicula</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body body_Peliculas">
+  <form class="row g-3  form_Admin">
+      <div class="col-12 col-md-4">
+        <label for="id" class="form-label">Id</label>
+        <input type="number" id="id" class="form-control" placeholder="Id de pelicula" required>
+      </div>
+      <div class="col-12 col-md-8">
+        <label for="nombre" class="form-label">Pelicula</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ingresá nombre de la pelicula" required>
+      </div>
+      <div class="col-12 col-md-6">
+        <label for="categoria" class="form-label">Categoria</label>
+        <select class="form-select" id="categoria" required>
+          <option selected></option>
+          <option value="Comedia">Comedia</option>
+          <option value="Terror">Terror</option>
+          <option value="Todos">Todos</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-6 destacada">
+        <label for="destacar" class="form-check-label">Pelicula destacada
+        <input type="checkbox" class="form-check-input" id="destacar">
+        </label>
+      </div>
+      <div class="col-12">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea class="form-control" id="descripcion" rows="3" placeholder="Ingresá descripción"
+        required>
+        </textarea>
+      </div>
+      <div class="col-12">
+        <label for="url_imagen_edit" class="form-label">Url de Imagen</label>
+        <input type="text" class="form-control" id="url_imagen_edit" placeholder="Ingresá url de imagen" required>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button onClick="agregarPelicula()" type="button" class="btn_modal_admin">Confirmar</button>
+    <button type="button" class="btn_modal_admin" data-bs-dismiss="modal">Cancelar</button>
+  </div>
+</div>
+</div>
+`;
 
 // Agrego los nodos creados a la grilla
 grilla.append(encabezado_grilla);
 grilla.append(cuerpo_grilla);
 contenedorBotonera.append(btn_new); //agrego 'boton insert' en div botonera
-contenedorBotonera.append(btn_update);
-contenedorBotonera.append(btn_delete);
-contenedorBotonera.append(btn_destacada);
 contenedorGrilla.append(divModalAdmin);
+contenedorGrilla.append(divModalAdmin_upd);
 contenedorGrilla.append(contenedorBotonera); //inserto div botonera
 contenedorGrilla.append(grilla); //inserto la grilla en su contenedor
 divFlexible.append(contenedorGrilla); //inserto el contenedor de grilla en el div flex
 // contenedor.append(div_titulo);
 contenedor.append(divFlexible);
-// document.body.appendChild(contenedor);
 
 // LOGICA PARA LA GRILLA
 const cargarGrilla = () => {
+  cuerpo_grilla.innerHTML = "";
   listaPeliculas.forEach((p) => {
     let fila = document.createElement("tr");
     fila.innerHTML = `
     <td>${p.nombre}</td>
     <td>${p.categoria}</td>
+    <td>
+      <div class="actions">
+      <a id="editar${p.id}"type="button"
+        data-bs-toggle="modal" data-bs-target="#modal_BtnUpdate" >
+        <i class="bi bi-pencil-square"></i>
+      </a>
+      <a id="eliminar${p.id}" type="button">
+        <i class="bi bi-trash-fill"></i>
+      </a>
+      <i class="bi bi-bookmark-star"></i>
+      </div>
+    </td>
     `;
     cuerpo_grilla.appendChild(fila);
+    const buttonEliminar = document
+      .getElementById(`eliminar${p.id}`)
+      .addEventListener("click", () => eliminarPelicula(p));
+    const buttonActualizar = document
+      .getElementById(`editar${p.id}`)
+      .addEventListener("click", () => editarPelicula(p));
   });
 };
 
 cargarGrilla();
+
+const editarPelicula = (pelicula) => {
+  // Selecciono los input del modal de update
+  const editId = document.getElementById("id_edit");
+  const editName = document.getElementById("pelicula_edit");
+  const editCategoria = document.getElementById("categoria_edit");
+  const editDestacada = document.getElementById("destacada_edit");
+  const editDescripcion = document.getElementById("descripcion_edit");
+  const editUrl = document.getElementById("url_imagen_edit");
+  // Completo el modal
+  editId.value = pelicula.id;
+  editName.value = pelicula.nombre;
+  editCategoria.value = pelicula.categoria;
+  if (pelicula.esDestacada) {
+    editDestacada.setAttribute("checked", "true");
+  } else {
+    editDestacada.setAttribute("checked", "false");
+  }
+  editDescripcion.value = pelicula.descripcion;
+  editUrl.value = pelicula.urlDeImagen;
+};
+
+const eliminarPelicula = (pelicula) => {};
+
+const agregarPelicula = () => {
+  const peli = {
+    id: id.value,
+    nombre: nombre.value,
+    categoria: categoria.value,
+    descripcion: descripcion.value,
+    urlDeImagen: url_imagen_edit.value,
+    esDestacada: destacar.value,
+  };
+  productos.push(peli);
+  localStorage.setItem("peliculas", JSON.stringify(productos));
+
+  id.value = "";
+  nombre.value = "";
+  categoria.value = "";
+  descripcion.value = "";
+  url_imagen_edit.value = "";
+  destacar.value = "";
+
+  cargarGrilla();
+};
