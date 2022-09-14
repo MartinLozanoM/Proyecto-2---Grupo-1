@@ -33,7 +33,7 @@ opcionB.innerHTML = "Peliculas";
 opcionC.innerHTML = "Series";
 opcionD.innerHTML = "Ingresar al Sistema";
 
-opcionA.setAttribute("href", "./error404.html");
+opcionA.setAttribute("href", "#");
 opcionB.setAttribute("href", "./error404.html");
 opcionC.setAttribute("href", "./error404.html");
 opcionD.setAttribute("href", "./error404.html");
