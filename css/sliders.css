@@ -55,7 +55,8 @@
 .m-peliculas-recomendadas .m-contenedor-principal .m-flecha-derecha {
   position: absolute;
   border: none;
-  background-color: rgba(0, 0, 0, 0.3);
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  background-color: rgba(255, 255, 255, 0.134);
   font-size: 40px;
   /* El HEIGHT original estaba en: 50% */
   height: 49%;
@@ -72,7 +73,8 @@
 
 .m-peliculas-recomendadas .m-contenedor-principal .m-flecha-izquierda:hover,
 .m-peliculas-recomendadas .m-contenedor-principal .m-flecha-derecha:hover {
-  background-color: rgba(0, 0, 0, 0.9);
+  /* background-color: rgba(0, 0, 0, 0.9); */
+  background-color: rgba(255, 255, 255, 0.134);
   opacity: 1;
 }
 
