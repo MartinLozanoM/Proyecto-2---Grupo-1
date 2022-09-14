@@ -96,6 +96,13 @@ header .navBar {
   font-weight: 600;
   margin-left: 17px;
 }
+.botonSistema:hover {
+  border-right: 2px solid var(--verde);
+  border-left: 2px solid var(--verde);
+  /* border-radius: 4%; */
+  background-color: #343a4ae9;
+  cursor: pointer;
+}
 
 /* breakpoints */
 /* MODO SMALL */ /*viene todo para modo small, luego empiezo a tocar estilos en modo tablet y pc*/

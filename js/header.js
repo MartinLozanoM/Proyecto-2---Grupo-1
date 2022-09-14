@@ -12,7 +12,7 @@ const navBar_Menu_Oculto = document.createElement("nav");
 const opcionA = document.createElement("a");
 const opcionB = document.createElement("a");
 const opcionC = document.createElement("a");
-const opcionD = document.createElement("button");
+const opcionD = document.createElement("a");
 
 // agrego clase a los elementos creados.
 navBar.className = "navBar";
@@ -33,11 +33,12 @@ opcionB.innerHTML = "Peliculas";
 opcionC.innerHTML = "Series";
 opcionD.innerHTML = "Ingresar al Sistema";
 
-opcionA.setAttribute("href", "#");
-opcionB.setAttribute("href", "#");
-opcionC.setAttribute("href", "#");
-
-opcionD.className = "botonSistema";
+opcionA.setAttribute("href", "./error404.html");
+opcionB.setAttribute("href", "./error404.html");
+opcionC.setAttribute("href", "./error404.html");
+opcionD.setAttribute("href", "./error404.html");
+opcionD.setAttribute("data-bs-toggle", "modal");
+opcionD.setAttribute("data-bs-target", "#login");
 
 // Unir todo
 navBar.appendChild(divLogo);
@@ -55,7 +56,7 @@ divMenu_Oculto.appendChild(cont_Menu_Oculto);
 // unir al header
 navBar.appendChild(divMenu_Oculto);
 // navBar.appendChild(modal);
-header.appendChild(navBar);
+header.append(navBar);
 // header.appendChild(divMenu_Oculto);
 
 // cuando hace scroll, el header cambia de color
@@ -85,8 +86,8 @@ divLogo.addEventListener("click", () => {
 
 // MODAL PARA LOGIN en opcion D 'Ingresar al sistema'
 
-// Obtengo el id del header
-const modalHeader = document.getElementById("modal");
+// // Obtengo el id del header
+// const modalHeader = document.getElementById("modal");
 
 // CREO EL MODAL PARA LOGIN
 const divModal = document.createElement("div");
@@ -130,7 +131,7 @@ divModal.innerHTML = `
 `;
 
 // inyecto el modal en el header
-modalHeader.append(divModal);
+header.append(divModal);
 
 // Configuro el modal en la opcionD
 

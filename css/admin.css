@@ -56,6 +56,8 @@ main {
 /* ESTILOS AL FORM */
 .actions {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .actions i {
   margin: 2px;
@@ -69,6 +71,11 @@ main {
   margin: 5px 0;
   font-size: 12px;
 }
+.botonNew:hover {
+  background-color: var(--verde);
+  color: var(--blanco);
+}
+
 /* estilos al modal */
 #header_modal {
   background-color: var(--blanco);
@@ -76,7 +83,7 @@ main {
 }
 #header_modal h5 {
   font-weight: 600;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .btn_modal_admin {
   border: 0.5px solid var(--blanco);
@@ -89,9 +96,7 @@ main {
   color: var(--blanco);
   cursor: pointer;
 }
-.content_modal {
-  border: 2px solid var(--verde) !important;
-}
+
 /* /////////////////BREAKPOINTS */
 
 /* modo tablet */
@@ -112,4 +117,15 @@ main {
 
 /* modo pc */
 @media (min-width: 992px) {
+  .contenedorGrilla {
+    min-width: 800px;
+  }
+  .contenedorGrilla th,
+  td {
+    font-size: 18px;
+  }
+  .botonNew {
+    padding: 5px;
+    font-size: 15px;
+  }
 } ;
