@@ -35,15 +35,15 @@
   margin-right: 5px;
   /* border: 1px solid var(--azulOscuro); */
   background-color: rgba(255, 255, 255, 0.544);
-  padding: 0.1px 3px;
+  padding: 2px 3px;
   border-radius: 100px;
   font-weight: 600;
-  font-size: 7px;
+  font-size: 8px;
   color: black;
 }
 
 .btn-VerMas {
-  padding-left: 0px;
+  /* padding-left: 0px; */
   background-color: rgba(255, 255, 255, 0.287);
 }
 
@@ -63,16 +63,15 @@
     margin-top: 10px;
     padding: 3px;
     font-size: 12px;
+    border: 1px dotted rgba(255, 255, 255, 0.287);
   }
   .banner-titulo {
+    margin-top: 23vh;
     font-size: 19px;
     font-weight: bold;
   }
   .banner-descripcion {
     font-size: 11px;
-  }
-  .btn-VerMas {
-    padding-left: 0px;
   }
 }
 
@@ -88,8 +87,5 @@
   .botones {
     padding: 4px;
     font-size: 15px;
-  }
-  .btn-VerMas {
-    padding-left: 0px;
   }
 }
