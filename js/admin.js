@@ -1,15 +1,309 @@
 // Inicializo la lista de PELICULAS
 const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 
-// // Plantilla de objeto pelicula
-// const peli = {
-//   id: 2,
-//   nombre: "",
-//   categoria: "",
-//   descripcion: "",
-//   urlDeImagen: "",
-//   esDestacada: false,
-// };
+// obtengo contenedor main
+const contenedor = document.getElementById("contenedor_admin");
+// creo elementos para la grilla
+const divFlexible = document.createElement("div");
+const contenedorGrilla = document.createElement("div");
+const grilla = document.createElement("table");
+const encabezado_grilla = document.createElement("thead");
+const cuerpo_grilla = document.createElement("tbody");
+
+// const div_titulo = document.createElement("div");
+// div_titulo.innerHTML = `<h2 id="titulo_admin">Adminitración de Peliculas</h2>`;
+
+// creo el contenedor de botones y el  boton de insert
+const contenedorBotonera = document.createElement("div");
+const btn_new = document.createElement("button");
+const btn_update = document.createElement("button");
+const btn_delete = document.createElement("button");
+const btn_destacada = document.createElement("button");
+// Agrego clases a la botonera
+contenedorBotonera.className = "d-flex justify-content-end contenedorBotonera";
+btn_new.className = "botonNew";
+
+btn_new.innerHTML = `AGREGAR`;
+
+// Agrego clases a la grilla
+grilla.className =
+  "table grilla table-striped table-hover table-bordered border-dark table-sm";
+divFlexible.className = "contenedorFlexilla_grilla";
+encabezado_grilla.className = "encabezado_grilla";
+cuerpo_grilla.className = "cuerpo_grilla";
+contenedorGrilla.className = "contenedorGrilla";
+
+// inserto en los nodos creados:
+// El encabezado siempre es fijo
+encabezado_grilla.innerHTML = `
+<tr>
+<th scope="col">Pelicula</th>
+<th scope="col">Categoria</th>
+<th scope="col"></th>
+</tr>`;
+
+// MODAL PARA INSERTAR PELI
+const divModalAdmin_new = document.createElement("div");
+divModalAdmin_new.className = "modal fade";
+divModalAdmin_new.setAttribute("id", "modal_BtnNew");
+divModalAdmin_new.setAttribute("data-bs-backdrop", "static");
+divModalAdmin_new.setAttribute("data-bs-keyboard", "false");
+divModalAdmin_new.setAttribute("tabindex", "-1");
+divModalAdmin_new.setAttribute("aria-labelledby", "staticBackdropLabel");
+divModalAdmin_new.setAttribute("aria-hidden", "true");
+
+// le agrego los att para modal a el boton nuevo
+btn_new.setAttribute("data-bs-toggle", "modal");
+btn_new.setAttribute("data-bs-target", "#modal_BtnNew");
+// modal de insert
+divModalAdmin_new.innerHTML = `
+<div class="modal-dialog">
+<div class="modal-content content_modal">
+  <div id="header_modal" class="modal-header">
+    <img id="img_logoModal" src="./img/logoPeli (2).png" alt="logoModal"/>
+    <h5 class="modal-title" id="staticBackdropLabel_2">Agregar Pelicula</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body body_Peliculas">
+  <form class="row g-3  form_Admin">
+      <div class="col-12 col-md-4">
+        <label for="id_new" class="form-label">Id</label>
+        <input type="number" id="id_new" class="form-control" placeholder="Id de pelicula" required>
+        </div>
+      <div class="col-12 col-md-8">
+        <label for="nombre_new" class="form-label">Pelicula</label>
+        <input type="text" class="form-control" id="nombre_new" placeholder="Ingresá nombre de la pelicula" required>
+        </div>
+      <div class="col-12 col-md-7">
+        <label for="categoria_new" class="form-label">Categoria</label>
+        <select class="form-select" id="categoria_new" required>
+          <option selected>Sin asignar</option>
+          <option value="Comedia">Comedia</option>
+          <option value="Terror">Terror</option>
+          <option value="Recomendadas">Recomendadas</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-3 ">
+        <label for="destacar_new" class="form-label">Destacar</label>
+        <select class="form-select" id="destacar_new" required>
+            <option value="No"selected>No</option>
+            <option value="Si">Si</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <label for="descripcion_new" class="form-label">Descripción</label>
+        <textarea class="form-control" id="descripcion_new" rows="3" placeholder="Ingresá descripción"
+        required>
+        </textarea>
+      </div>
+      <div class="col-12">
+        <label for="url_imagen_edit_new" class="form-label">Url de Imagen</label>
+        <input type="text" class="form-control" id="url_imagen_edit_new" placeholder="Ingresá url de imagen" required>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="confirmar_new" class="btn_modal_admin">Confirmar</button>
+    <button type="button" class="btn_modal_admin" data-bs-dismiss="modal">Cancelar</button>
+  </div>
+</div>
+</div>
+`;
+
+// MODAL PARA ACTUALIZAR PELI
+const divModalAdmin_upd = document.createElement("div");
+divModalAdmin_upd.className = "modal fade";
+divModalAdmin_upd.setAttribute("id", "modal_BtnUpdate");
+divModalAdmin_upd.setAttribute("data-bs-backdrop", "static");
+divModalAdmin_upd.setAttribute("data-bs-keyboard", "false");
+divModalAdmin_upd.setAttribute("tabindex", "-1");
+divModalAdmin_upd.setAttribute("aria-labelledby", "staticBackdropLabel_2");
+divModalAdmin_upd.setAttribute("aria-hidden", "true");
+
+// modal de update
+divModalAdmin_upd.innerHTML = `
+<div class="modal-dialog">
+<div class="modal-content content_modal">
+  <div id="header_modal" class="modal-header">
+    <img id="img_logoModal" src="./img/logoPeli (2).png" alt="logoModal"/>
+    <h5 class="modal-title" id="staticBackdropLabel">Editar Pelicula</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body body_Peliculas">
+  <form class="row g-3 form_Admin">
+      <div class="col-12 col-md-4">
+        <label for="id_edit" class="form-label">ID</label>
+        <input type="number" id="id_edit" class="form-control" placeholder="Id de pelicula" required>
+        </div>
+      <div class="col-12 col-md-8">
+        <label for="pelicula_edit" class="form-label">Pelicula</label>
+        <input type="text" class="form-control" id="pelicula_edit" placeholder="Ingresá nombre de la pelicula" required>
+      </div>
+      <div class="col-12 col-md-7">
+        <label for="categoria_edit" class="form-label">Categoria</label>
+        <select class="form-select" id="categoria_edit" required>
+          <option selected>Sin asignar</option>
+          <option value="Comedia">Comedia</option>
+          <option value="Terror">Terror</option>
+          <option value="Recomendadas">Recomendadas</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-3 ">
+        <label for="destacar_edit" class="form-label">Destacar</label>
+        <select class="form-select" id="destacar_edit" required>
+            <option value="No"selected>No</option>
+            <option value="Si">Si</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <label for="descripcion_edit" class="form-label">Descripción</label>
+        <textarea class="form-control" id="descripcion_edit" rows="3" placeholder="Ingresá descripción"
+        required>
+        </textarea>
+      </div>
+      <div class="col-12">
+      <label for="url_imagen_edit" class="form-label">Url de Imagen</label>
+      <input type="text" class="form-control" id="url_imagen_edit" placeholder="Ingresá url de imagen" required>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="guardarCambios_upd" class="btn_modal_admin">Guardar</button>
+    <button type="button" class="btn_modal_admin" data-bs-dismiss="modal">Cancelar</button>
+  </div>
+</div>
+</div>
+`;
+
+// Agrego los nodos creados a la grilla
+grilla.appendChild(encabezado_grilla);
+grilla.appendChild(cuerpo_grilla);
+contenedorBotonera.appendChild(btn_new); //agrego 'boton insert' en div botonera
+contenedorGrilla.appendChild(divModalAdmin_new);
+contenedorGrilla.appendChild(divModalAdmin_upd);
+contenedorGrilla.appendChild(contenedorBotonera); //inserto div botonera
+contenedorGrilla.appendChild(grilla); //inserto la grilla en su contenedor
+divFlexible.appendChild(contenedorGrilla); //inserto el contenedor de grilla en el div flex
+contenedor.appendChild(divFlexible);
+
+// LOGICA PARA LA GRILLA
+const cargarGrilla = () => {
+  cuerpo_grilla.innerHTML = "";
+  PELICULAS.forEach((p) => {
+    let fila = document.createElement("tr");
+    fila.innerHTML = `
+    <td>${p.nombre}</td>
+    <td>${p.categoria}</td>
+    <td>
+      <div class="actions">
+      <a type="button" id="upd_${p.id}"
+        data-bs-toggle="modal" data-bs-target="#modal_BtnUpdate" >
+        <i class="bi bi-pencil-square"></i>
+      </a>
+      <a  type="button" id="del_${p.id}">
+        <i class="bi bi-trash-fill"></i>
+      </a>
+      <i class="bi bi-bookmark-star" id="destacada_${p.id}"></i>
+      </div>
+    </td>
+    `;
+    cuerpo_grilla.appendChild(fila);
+
+    // llamadores
+    const editar = document.getElementById(`upd_${p.id}`);
+    editar.addEventListener("click", () => editarPelicula(p));
+    const eliminar = document.getElementById(`del_${p.id}`);
+    eliminar.addEventListener("click", () => eliminarPelicula(p));
+    const destacada = document.getElementById(`destacada_${p.id}`);
+    destacada.addEventListener("click", () => destacar(p));
+  });
+};
+
+cargarGrilla();
+
+// ------------------ABM DE PELICULAS-----------------------------------------------------------
+
+const agregarPelicula = document.getElementById("confirmar_new");
+agregarPelicula.addEventListener("click", () => {
+  // capturar datos de los input y crear objeto de pelicula
+  let peli = {
+    id: id_new.value,
+    nombre: nombre_new.value,
+    categoria: categoria_new.value,
+    descripcion: descripcion_new.value,
+    urlDeImagen: url_imagen_edit_new.value,
+    esDestacada: destacar_new.value,
+  };
+
+  PELICULAS.push(peli);
+  localStorage.setItem("peliculas", JSON.stringify(PELICULAS));
+
+  // seteo los input.
+  id_new.value = "";
+  nombre_new.value = "";
+  categoria_new.value = "";
+  descripcion_new.value = "";
+  url_imagen_edit_new.value = "";
+  destacar_new.value = "";
+
+  // actualizar grilla
+  cargarGrilla();
+
+  // cerrar el modal y tirar mensaje de error
+});
+
+const eliminarPelicula = (pelicula) => {
+  const index = PELICULAS.indexOf(pelicula);
+  PELICULAS.splice(index, 1);
+  localStorage.setItem("peliculas", JSON.stringify(PELICULAS));
+  cargarGrilla();
+};
+
+const editarPelicula = (pelicula) => {
+  // Selecciono los input del modal de update
+  const editId = document.getElementById("id_edit");
+  const editName = document.getElementById("pelicula_edit");
+  const editCategoria = document.getElementById("categoria_edit");
+  const editDestacada = document.getElementById("destacar_edit");
+  const editDescripcion = document.getElementById("descripcion_edit");
+  const editUrl = document.getElementById("url_imagen_edit");
+  // Completo el modal
+  editId.value = pelicula.id;
+  editName.value = pelicula.nombre;
+  editCategoria.value = pelicula.categoria;
+  editDestacada.value = pelicula.esDestacada;
+  editDescripcion.value = pelicula.descripcion;
+  editUrl.value = pelicula.urlDeImagen;
+
+  const botonGuardar = document.getElementById("guardarCambios_upd");
+  botonGuardar.addEventListener("click", () => {
+    let peli = {
+      id: editId.value,
+      nombre: editName.value,
+      categoria: editCategoria.value,
+      descripcion: editDescripcion.value,
+      urlDeImagen: url_imagen_edit_new.value,
+      esDestacada: editUrl.value,
+    };
+    // Elimino la pelicula con datos viejos
+    eliminarPelicula(pelicula);
+    // Agrego pelicula actualizada a la lista
+    PELICULAS.push(peli);
+    // Agrego lista actualizada al local storage
+    localStorage.setItem("peliculas", JSON.stringify(PELICULAS));
+
+    cargarGrilla(); //actualizo la grilla
+  });
+};
+
+const destacar = (pelicula) => {
+  const listaSinDestacadas = PELICULAS.map((p) => (p.esDestacada = "No"));
+  localStorage.setItem("peliculas", JSON.stringify(listaSinDestacadas));
+
+  const index = PELICULAS.indexOf(pelicula);
+  PELICULAS[index].esDestacada = "Si";
+  cargarGrilla();
+};
 
 // const listaPeliculas = [
 //   // INICIO PELICULAS DE COMEDIA
@@ -153,7 +447,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 16,
 //     nombre: "Venom",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "El periodista Eddie Brock está investigando a Carlton Drake, el célebre fundador de Life Foundation. Brock establece una simbiosis con un ente alienígena que le ofrece superpoderes, pero el ser se apodera de su personalidad y lo vuelve perverso.",
 //     urlDeImagen: "./img/imagenes slider/1.jpg",
@@ -162,7 +456,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 17,
 //     nombre: "Batman, el caballero de la noche",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Batman tiene que mantener el equilibrio entre el heroísmo y el vigilantismo para pelear contra un vil criminal conocido como el Guasón, que pretende sumir Ciudad Gótica en la anarquía.",
 //     urlDeImagen: "./img/imagenes slider/2.jpg",
@@ -171,16 +465,16 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 18,
 //     nombre: "Terminator",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
-//       "Año 2029. Las máquinas dominan el mundo y solo John Connor, el líder de todos los seres humanos, puede acabar con ellas. Para evitar su derrota las máquinas han enviado a un robot llamado Terminator al pasado y así evitar que este ser humano nazca",
+//       "Año 2029. Las máquinas dominan el mundo y solo John Connor, el líder de Recomendadas los seres humanos, puede acabar con ellas. Para evitar su derrota las máquinas han enviado a un robot llamado Terminator al pasado y así evitar que este ser humano nazca",
 //     urlDeImagen: "./img/imagenes slider/3.jpg",
 //     esDestacada: false,
 //   },
 //   {
 //     id: 19,
 //     nombre: "Escalofrios",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Zach llega a un pequeño y aburrido pueblo, donde pronto hace amistad con la vecina. Descubre que su padre es el escritor R. L. Stine, autor de los libros de terror Escalofríos, y que todos los monstruos que Stine describió en sus obras son reales",
 //     urlDeImagen: "./img/imagenes slider/4.jpg",
@@ -189,7 +483,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 20,
 //     nombre: "Deadpool",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Un exmercenario quien, tras haber sido sometido a un cruel experimento, adquiere el superpoder de sanar rápidamente y pretende vengarse del hombre que destrozó su vida.",
 //     urlDeImagen: "./img/imagenes slider/5.jpg",
@@ -198,7 +492,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 21,
 //     nombre: "Power Rangers",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Cinco adolescentes ordinarios deben convertirse en superhéroes cuando se enteran de que su pequeña ciudad de Angel Grove, y el mundo entero, están a punto de ser borrados por una amenaza alienígena.",
 //     urlDeImagen: "./img/imagenes slider/6.jpg",
@@ -207,7 +501,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 22,
 //     nombre: "La gran muralla",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Encarcelado dentro de la Gran Muralla china, un guerrero mercenario une fuerzas con un ejército de élite para luchar contra un ataque de monstruos saqueadores.",
 //     urlDeImagen: "./img/imagenes slider/7.jpg",
@@ -216,7 +510,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 23,
 //     nombre: "Wall-E",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Luego de pasar años limpiando la Tierra desierta, el robot Wall-E conoce a EVA y la sigue por toda la galaxia.",
 //     urlDeImagen: "./img/imagenes slider/8.jpg",
@@ -225,7 +519,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 24,
 //     nombre: "Abraham Lincoln: cazador de vampiros",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Lincoln se compromete a salvar a Estados Unidos del ataque de los muertos vivientes.",
 //     urlDeImagen: "./img/imagenes slider/9.jpg",
@@ -234,7 +528,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 25,
 //     nombre: "Los vengadores",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "El director de la Agencia SHIELD decide reclutar a un equipo para salvar al mundo de un desastre casi seguro cuando un enemigo inesperado surge como una gran amenaza para la seguridad mundial.",
 //     urlDeImagen: "./img/imagenes slider/10.jpg",
@@ -243,7 +537,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 26,
 //     nombre: "Batman: El caballero de la noche asciende",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Ocho años después de asumir la culpa por la muerte de Harvey Dent y desaparecer en la noche, Batman se ve obligado a salir del exilio autoimpuesto gracias a una ladrona astuta y a un terrorista despiadado.",
 //     urlDeImagen: "./img/imagenes slider/11.jpg",
@@ -252,7 +546,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 27,
 //     nombre: "La Liga de la Justicia de Zack Snyder",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Impulsado por su restaurada fe en la humanidad e inspirado por el acto desinteresado de Superman, Batman y su nueva aliada la Mujer Maravilla reclutan a Aquaman, Cyborg y Flash para que los ayuden a salvar el planeta de un enemigo recién despertado.",
 //     urlDeImagen: "./img/imagenes slider/12.jpg",
@@ -261,7 +555,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 28,
 //     nombre: "300",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "En el año 480 antes de Cristo, existe un estado de guerra entre Persia y Grecia. En la Batalla de Thermopylae, Leonidas rey de Esparta, encabeza a sus autonombrados guerreros en contra del numeroso ejército persa.",
 //     urlDeImagen: "./img/imagenes slider/13.jpg",
@@ -270,7 +564,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 29,
 //     nombre: "T-34",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Un tanque semidestruido sirve a un grupo de soldados rusos prisioneros a escapar del cautiverio alemán.",
 //     urlDeImagen: "./img/imagenes slider/14.jpg",
@@ -279,7 +573,7 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   {
 //     id: 30,
 //     nombre: "Hellboy",
-//     categoria: "Todos",
+//     categoria: "Recomendadas",
 //     descripcion:
 //       "Los nazis recurren a la magia negra para sobrevivir tras la Segunda Guerra Mundial. En una ceremonia, crean al hijo del diablo: Hellboy.",
 //     urlDeImagen: "./img/imagenes slider/15.jpg",
@@ -424,296 +718,4 @@ const PELICULAS = JSON.parse(localStorage.getItem("peliculas")) || [];
 //   },
 //   // FIN PELICULAS DE TERROR
 // ];
-
-// obtengo contenedor main
-const contenedor = document.getElementById("contenedor_admin");
-
-// creo elementos para la grilla
-const divFlexible = document.createElement("div");
-const contenedorGrilla = document.createElement("div");
-const grilla = document.createElement("table");
-const encabezado_grilla = document.createElement("thead");
-const cuerpo_grilla = document.createElement("tbody");
-
-// const div_titulo = document.createElement("div");
-// div_titulo.innerHTML = `<h2 id="titulo_admin">Adminitración de Peliculas</h2>`;
-
-// creo el contenedor de botones y el  boton de insert
-const contenedorBotonera = document.createElement("div");
-const btn_new = document.createElement("button");
-const btn_update = document.createElement("button");
-const btn_delete = document.createElement("button");
-const btn_destacada = document.createElement("button");
-// Agrego clases a la botonera
-contenedorBotonera.className = "d-flex justify-content-end contenedorBotonera";
-btn_new.className = "botonNew";
-
-//  <i class="bi bi-plus"></i> ICONS DE INSERT
-btn_new.innerHTML = `AGREGAR`;
-
-// Agrego clases a la grilla
-grilla.className =
-  "table grilla table-striped table-hover table-bordered border-dark table-sm";
-divFlexible.className = "contenedorFlexilla_grilla";
-encabezado_grilla.className = "encabezado_grilla";
-cuerpo_grilla.className = "cuerpo_grilla";
-contenedorGrilla.className = "contenedorGrilla";
-
-// inserto en los nodos creados:
-// El encabezado siempre es fijo
-encabezado_grilla.innerHTML = `
-<tr>
-<th scope="col">Pelicula</th>
-<th scope="col">Categoria</th>
-<th scope="col"></th>
-</tr>`;
-
-// MODAL PARA INSERTAR PELI
-const divModalAdmin_new = document.createElement("div");
-divModalAdmin_new.className = "modal fade";
-divModalAdmin_new.setAttribute("id", "modal_BtnNew");
-divModalAdmin_new.setAttribute("data-bs-backdrop", "static");
-divModalAdmin_new.setAttribute("data-bs-keyboard", "false");
-divModalAdmin_new.setAttribute("tabindex", "-1");
-divModalAdmin_new.setAttribute("aria-labelledby", "staticBackdropLabel");
-divModalAdmin_new.setAttribute("aria-hidden", "true");
-
-// le agrego los att para modal a el boton nuevo
-btn_new.setAttribute("data-bs-toggle", "modal");
-btn_new.setAttribute("data-bs-target", "#modal_BtnNew");
-// modal de insert
-divModalAdmin_new.innerHTML = `
-<div class="modal-dialog">
-<div class="modal-content content_modal">
-  <div id="header_modal" class="modal-header">
-    <img id="img_logoModal" src="./img/logoPeli (2).png" alt="logoModal"/>
-    <h5 class="modal-title" id="staticBackdropLabel_2">Agregar Pelicula</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-  </div>
-  <div class="modal-body body_Peliculas">
-  <form class="row g-3  form_Admin">
-      <div class="col-12 col-md-4">
-        <label for="id_new" class="form-label">Id</label>
-        <input type="number" id="id_new" class="form-control" placeholder="Id de pelicula" required>
-      </div>
-      <div class="col-12 col-md-8">
-        <label for="nombre_new" class="form-label">Pelicula</label>
-        <input type="text" class="form-control" id="nombre_new" placeholder="Ingresá nombre de la pelicula" required>
-      </div>
-      <div class="col-12 col-md-6">
-        <label for="categoria_new" class="form-label">Categoria</label>
-        <select class="form-select" id="categoria_new" required>
-          <option selected></option>
-          <option value="Comedia">Comedia</option>
-          <option value="Terror">Terror</option>
-          <option value="Todos">Todos</option>
-        </select>
-      </div>
-      <div class="col-12 col-md-6 destacada">
-        <label for="destacar_new" class="form-check-label">Pelicula destacada
-        <input type="checkbox" class="form-check-input" id="destacar_new">
-        </label>
-      </div>
-      <div class="col-12">
-        <label for="descripcion_new" class="form-label">Descripción</label>
-        <textarea class="form-control" id="descripcion_new" rows="3" placeholder="Ingresá descripción"
-        required>
-        </textarea>
-      </div>
-      <div class="col-12">
-        <label for="url_imagen_edit_new" class="form-label">Url de Imagen</label>
-        <input type="text" class="form-control" id="url_imagen_edit_new" placeholder="Ingresá url de imagen" required>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button onClick="agregarPelicula()" type="button" class="btn_modal_admin">Confirmar</button>
-    <button type="button" class="btn_modal_admin" data-bs-dismiss="modal">Cancelar</button>
-  </div>
-</div>
-</div>
-`;
-
-// MODAL PARA ACTUALIZAR PELI
-const divModalAdmin_upd = document.createElement("div");
-divModalAdmin_upd.className = "modal fade";
-divModalAdmin_upd.setAttribute("id", "modal_BtnUpdate");
-divModalAdmin_upd.setAttribute("data-bs-backdrop", "static");
-divModalAdmin_upd.setAttribute("data-bs-keyboard", "false");
-divModalAdmin_upd.setAttribute("tabindex", "-1");
-divModalAdmin_upd.setAttribute("aria-labelledby", "staticBackdropLabel_2");
-divModalAdmin_upd.setAttribute("aria-hidden", "true");
-
-// modal de update
-divModalAdmin_upd.innerHTML = `
-<div class="modal-dialog">
-<div class="modal-content content_modal">
-  <div id="header_modal" class="modal-header">
-    <img id="img_logoModal" src="./img/logoPeli (2).png" alt="logoModal"/>
-    <h5 class="modal-title" id="staticBackdropLabel">Editar Pelicula</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-  </div>
-  <div class="modal-body body_Peliculas">
-  <form class="row g-3  form_Admin">
-      <div class="col-12 col-md-4">
-        <label for="id_edit" class="form-label">ID</label>
-        <input type="number" id="id_edit" class="form-control" placeholder="Id de pelicula" required>
-      </div>
-      <div class="col-12 col-md-8">
-        <label for="pelicula_edit" class="form-label">Pelicula</label>
-        <input type="text" class="form-control" id="pelicula_edit" placeholder="Ingresá nombre de la pelicula" required>
-      </div>
-      <div class="col-12 col-md-6">
-        <label for="categoria_edit" class="form-label">Categoria</label>
-        <select class="form-select" id="categoria_edit" required>
-        <option selected></option>
-        <option value="Comedia">Comedia</option>
-        <option value="Terror">Terror</option>
-        <option value="Todos">Todos</option>
-        </select>
-      </div>
-      <div class="col-12 col-md-6 destacada">
-        <label for="destacar_edit" class="form-check-label">Pelicula destacada
-        <input type="checkbox" class="form-check-input" id="destacar_edit">
-        </label>
-      </div>
-      <div class="col-12">
-        <label for="descripcion_edit" class="form-label">Descripción</label>
-        <textarea class="form-control" id="descripcion_edit" rows="3" placeholder="Ingresá descripción"
-        required>
-        </textarea>
-      </div>
-      <div class="col-12">
-      <label for="url_imagen_edit" class="form-label">Url de Imagen</label>
-      <input type="text" class="form-control" id="url_imagen_edit" placeholder="Ingresá url de imagen" required>
-    </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" id="guardarCambios_upd" class="btn_modal_admin">Guardar</button>
-    <button type="button" class="btn_modal_admin" data-bs-dismiss="modal">Cancelar</button>
-  </div>
-</div>
-</div>
-`;
-
-// Agrego los nodos creados a la grilla
-grilla.append(encabezado_grilla);
-grilla.append(cuerpo_grilla);
-contenedorBotonera.append(btn_new); //agrego 'boton insert' en div botonera
-contenedorGrilla.append(divModalAdmin_new);
-contenedorGrilla.append(divModalAdmin_upd);
-contenedorGrilla.append(contenedorBotonera); //inserto div botonera
-contenedorGrilla.append(grilla); //inserto la grilla en su contenedor
-divFlexible.append(contenedorGrilla); //inserto el contenedor de grilla en el div flex
-// contenedor.append(div_titulo);
-contenedor.append(divFlexible);
-
-// LOGICA PARA LA GRILLA
-const cargarGrilla = () => {
-  cuerpo_grilla.innerHTML = "";
-  PELICULAS.forEach((p) => {
-    let fila = document.createElement("tr");
-    fila.innerHTML = `
-    <td>${p.nombre}</td>
-    <td>${p.categoria}</td>
-    <td>
-      <div class="actions">
-      <a id="editar${p.id}"type="button"
-        data-bs-toggle="modal" data-bs-target="#modal_BtnUpdate" >
-        <i class="bi bi-pencil-square"></i>
-      </a>
-      <a id="eliminar${p.id}" type="button">
-        <i class="bi bi-trash-fill"></i>
-      </a>
-      <i class="bi bi-bookmark-star"></i>
-      </div>
-    </td>
-    `;
-    cuerpo_grilla.appendChild(fila);
-    let buttonEliminar = document
-      .getElementById(`eliminar${p.id}`)
-      .addEventListener("click", () => eliminarPelicula(p));
-    let buttonActualizar = document
-      .getElementById(`editar${p.id}`)
-      .addEventListener("click", () => editarPelicula(p));
-  });
-};
-
-cargarGrilla();
-
-const editarPelicula = (pelicula) => {
-  // Selecciono los input del modal de update
-  const editId = document.getElementById("id_edit");
-  const editName = document.getElementById("pelicula_edit");
-  const editCategoria = document.getElementById("categoria_edit");
-  const editDestacada = document.getElementById("destacar_edit");
-  const editDescripcion = document.getElementById("descripcion_edit");
-  const editUrl = document.getElementById("url_imagen_edit");
-  // Completo el modal
-  editId.value = pelicula.id;
-  editName.value = pelicula.nombre;
-  editCategoria.value = pelicula.categoria;
-  if (pelicula.esDestacada) {
-    editDestacada.value = "True";
-  } else {
-    editDestacada.value = "False";
-  }
-  editDescripcion.value = pelicula.descripcion;
-  editUrl.value = pelicula.urlDeImagen;
-
-  let botonGuardar = document.getElementById("guardarCambios_upd");
-  botonGuardar.addEventListener("click", () => {
-    let peli = {
-      id: editId.value,
-      nombre: editName.value,
-      categoria: editCategoria.value,
-      descripcion: editDescripcion.value,
-      urlDeImagen: url_imagen_edit_new.value,
-      esDestacada: editUrl.value,
-    };
-    // Elimino la pelicula con datos viejos
-    eliminarPelicula(pelicula);
-    // Agrego pelicula actualizada a la lista
-    PELICULAS.push(peli);
-    // Agrego lista actualizada al local storage
-    localStorage.setItem("peliculas", JSON.stringify(PELICULAS));
-
-    cargarGrilla(); //actualizo la grilla
-  });
-};
-
-const agregarPelicula = () => {
-  // capturar datos de los input y crear objeto de pelicula
-  let peli = {
-    id: id_new.value,
-    nombre: nombre_new.value,
-    categoria: categoria_new.value,
-    descripcion: descripcion_new.value,
-    urlDeImagen: url_imagen_edit_new.value,
-    esDestacada: destacar_new.value,
-  };
-
-  PELICULAS.push(peli);
-  localStorage.setItem("peliculas", JSON.stringify(PELICULAS));
-
-  // seteo los input.
-  id_new.value = "";
-  nombre_new.value = "";
-  categoria_new.value = "";
-  descripcion_new.value = "";
-  url_imagen_edit_new.value = "";
-  destacar_new.value = "";
-
-  // actualizar grilla
-  cargarGrilla();
-
-  // cerrar el modal y tirar mensaje de error
-};
-
-const eliminarPelicula = (pelicula) => {
-  const index = PELICULAS.indexOf(pelicula);
-  PELICULAS.splice(index, 1);
-  localStorage.setItem("peliculas", JSON.stringify(PELICULAS));
-  cargarGrilla();
-};
+// localStorage.setItem("peliculas", JSON.stringify(listaPeliculas));

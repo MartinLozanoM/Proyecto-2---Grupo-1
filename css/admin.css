@@ -58,9 +58,12 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  cursor: pointer;
 }
 .actions i {
+  padding: 5px;
   margin: 2px;
+  font-size: 17px;
 }
 .botonNew {
   border: 1px solid var(--blanco); /* border: none; */
@@ -75,6 +78,11 @@ main {
 .botonNew:hover {
   background-color: var(--verde);
   color: var(--blanco);
+}
+
+.contenedorGrilla th,
+td {
+  font-size: 14px;
 }
 
 /* estilos al modal */
@@ -114,6 +122,15 @@ main {
     align-items: center;
     margin-top: 50px;
   }
+  .contenedorGrilla th,
+  td {
+    font-size: 20px;
+  }
+  .actions i {
+    padding: 10px;
+    margin: 2px;
+    font-size: 25px;
+  }
 }
 
 /* modo pc */
@@ -123,10 +140,15 @@ main {
   }
   .contenedorGrilla th,
   td {
-    font-size: 18px;
+    font-size: 22px;
   }
   .botonNew {
     padding: 5px;
     font-size: 15px;
+  }
+  .actions i {
+    padding: 10px;
+    margin: 2px;
+    font-size: 28px;
   }
 } ;
