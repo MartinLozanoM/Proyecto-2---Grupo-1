@@ -131,6 +131,10 @@ td {
     margin: 2px;
     font-size: 25px;
   }
+  .botonNew {
+    padding: 9px;
+    font-size: 15px;
+  }
 }
 
 /* modo pc */
@@ -150,5 +154,9 @@ td {
     padding: 10px;
     margin: 2px;
     font-size: 28px;
+  }
+  .botonNew {
+    padding: 12px;
+    font-size: 19px;
   }
 } ;
