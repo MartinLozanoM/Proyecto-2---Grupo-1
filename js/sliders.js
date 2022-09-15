@@ -1,94 +1,75 @@
-// // ! --------------- Recomendadas ------------------------
-// // ? --------------- Obtenemos el contenedor -----------------
-// const contenedorCarouselRecomendadas = document.getElementById(
-//   "contenedor-recomendadas"
-// );
-// // ? --------------- Creamos los elementos -----------------
-// const divCarouselRecomendadas = document.createElement("div");
+// // INYECCION DE PELICULAS
+const listaPeliculas = JSON.parse(localStorage.getItem("peliculas"));
 
-// // ? --------------- Agrego clases -----------------
-// divCarouselRecomendadas.className = "m-carousel";
+// OBTENGO DIV PARA LOS CAROUSELES
+const contenedorCarouselRecomendadas = document.getElementById(
+  "contenedor-recomendadas"
+);
+const contenedorCarouselTerror = document.getElementById("contenedor-terror");
+const contenedorCarouselComedia = document.getElementById("contenedor-comedia");
 
-// // obtengo array de las peliculas recomendadas -'Todos'
-// const listaPeliculas = JSON.parse(localStorage.getItem("peliculas"));
+// Creo contenedor para corousel.
+const divCarouselRecomendadas = document.createElement("div");
+const divCarouselTerror = document.createElement("div");
+const divCarouselComedia = document.createElement("div");
 
-// const peliculas_Recomendadas = listaPeliculas.filter(
-//   (p) => (p.categoria = "Todos")
-// );
+// Asigno clases a contenedor del carousel.
+divCarouselRecomendadas.className = "m-carousel";
+divCarouselTerror.className = "m-carousel";
+divCarouselComedia.className = "m-carousel";
 
-// peliculas_Recomendadas.forEach((peli) => {
-//   const divPelicula = document.createElement("div");
-//   divPelicula.className = "m-pelicula";
-//   divPelicula.innerHTML = `<a href="./error404.html"><img src="${peli.urlDeImagen}" alt="pelicula_${peli.nombre}"></a>`;
-//   divCarouselRecomendadas.appendChild(divPelicula);
-// });
+const cargar_PelisDestacadas = () => {
+  let peliculas_Recomendadas = listaPeliculas.filter(
+    (p) => p.categoria === "Recomendadas"
+  );
+  for (let i = 0; i < peliculas_Recomendadas.length; i++) {
+    let pelicula = peliculas_Recomendadas[i];
+    let divPelicula_r = document.createElement("div");
+    divPelicula_r.className = "m-pelicula";
+    divPelicula_r.innerHTML = `
+  <a href="./error404.html"><img src="${pelicula.urlDeImagen}" alt="pelicula"></a>`;
+    divCarouselRecomendadas.appendChild(divPelicula_r);
+  }
+  contenedorCarouselRecomendadas.appendChild(divCarouselRecomendadas);
+};
 
-// contenedorCarouselRecomendadas.appendChild(divCarouselRecomendadas);
+const cargar_PelisTerror = () => {
+  let peliculas_Terror = listaPeliculas.filter((p) => p.categoria === "Terror");
 
-// // for (let i = 1; i < 16; i++) {
-// //   const divPelicula = document.createElement("div");
-// //   divPelicula.className = "m-pelicula";
-// //   divPelicula.innerHTML = `<a href="./error404.html"><img src="./img/imagenes slider/${i}.jpg" alt="pelicula"></a>`;
-// //   divCarouselRecomendadas.appendChild(divPelicula);
-// // }
+  for (let i = 0; i < peliculas_Terror.length; i++) {
+    let pelicula = peliculas_Terror[i];
+    let divPelicula_t = document.createElement("div");
+    divPelicula_t.className = "m-pelicula";
+    divPelicula_t.innerHTML = `
+    <a href="./error404.html"><img src="${pelicula.urlDeImagen}" alt="pelicula"></a>`;
+    divCarouselTerror.appendChild(divPelicula_t);
+  }
+  contenedorCarouselTerror.appendChild(divCarouselTerror);
+};
 
-// // ! --------------- Terror ------------------------
-// // ? --------------- Obtenemos el contenedor -----------------
-// const contenedorCarouselTerror = document.getElementById("contenedor-terror");
-// // ? --------------- Creamos los elementos -----------------
-// const divCarouselTerror = document.createElement("div");
+const cargar_PelisComedia = () => {
+  let peliculas_Comedia = listaPeliculas.filter(
+    (p) => p.categoria === "Comedia"
+  );
 
-// // ? --------------- Agrego clases -----------------
-// // Obtengo lista de peliculas de terror que tengo
-// const peliculas_Terror = listaPeliculas.filter((p) => (p.categoria = "Terror"));
+  for (let i = 0; i < peliculas_Comedia.length; i++) {
+    let pelicula = peliculas_Comedia[i];
+    let divPelicula_c = document.createElement("div");
+    divPelicula_c.className = "m-pelicula";
+    divPelicula_c.innerHTML = `
+    <a href="./error404.html"><img src="${pelicula.urlDeImagen}" alt="pelicula"></a>`;
+    divCarouselComedia.appendChild(divPelicula_c);
+  }
+  contenedorCarouselComedia.appendChild(divCarouselComedia);
+};
 
-// divCarouselTerror.className = "m-carousel";
+const actualizarCatalogo = () => {
+  cargar_PelisDestacadas();
+  cargar_PelisTerror();
+  cargar_PelisComedia();
+};
 
-// peliculas_Terror.forEach((peli) => {
-//   const divPelicula = document.createElement("div");
-//   divPelicula.className = "m-pelicula";
-//   divPelicula.innerHTML = `<a href="./error404.html"><img src="${peli.urlDeImagen}" alt="pelicula_${peli.nombre}"></a>`;
-//   divCarouselRecomendadas.appendChild(divPelicula);
-// });
-
-// contenedorCarouselTerror.appendChild(divCarouselTerror);
-
-// for (let i = 16; i < 31; i++) {
-//   const divPelicula = document.createElement("div");
-//   divPelicula.className = "m-pelicula";
-//   divPelicula.innerHTML = `<a href="./error404.html"><img src="./img/terror/${i}.jpg" alt="pelicula"></a>`;
-//   divCarouselTerror.appendChild(divPelicula);
-// }
-
-// // ! --------------- Comedia ------------------------
-// // ? --------------- Obtenemos el contenedor -----------------
-// const contenedorCarouselComedia = document.getElementById("contenedor-comedia");
-// // ? --------------- Creamos los elementos -----------------
-// const divCarouselComedia = document.createElement("div");
-
-// // ? --------------- Agrego clases -----------------
-// // Obtengo lista de peliculas de comedia que tengo.
-// const peliculas_Comedia = listaPeliculas.filter(
-//   (p) => (p.categoria = "Comedia")
-// );
-
-// divCarouselComedia.className = "m-carousel";
-
-// peliculas_Comedia.forEach((peli) => {
-//   const divPelicula = document.createElement("div");
-//   divPelicula.className = "m-pelicula";
-//   divPelicula.innerHTML = `<a href="./error404.html"><img src="${peli.urlDeImagen}" alt="pelicula_${peli.nombre}"></a>`;
-//   divCarouselRecomendadas.appendChild(divPelicula);
-// });
-
-// contenedorCarouselComedia.appendChild(divCarouselComedia);
-
-// for (let i = 31; i < 45; i++) {
-//   const divPelicula = document.createElement("div");
-//   divPelicula.className = "m-pelicula";
-//   divPelicula.innerHTML = `<a href="./error404.html"><img src="./img/comedia/${i}.jpg" alt="pelicula"></a>`;
-//   divCarouselComedia.appendChild(divPelicula);
-// }
+actualizarCatalogo();
 
 // ? --------------- Variables para posicionarse -----------------
 

@@ -25,3 +25,7 @@ body {
 main {
   margin-bottom: 20vh;
 }
+
+.modal-backdrop {
+  z-index: 100 !important;
+}
