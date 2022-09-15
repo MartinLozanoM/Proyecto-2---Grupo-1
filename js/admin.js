@@ -28,7 +28,7 @@ const cargar_PelisDestacadas = () => {
     let divPelicula_r = document.createElement("div");
     divPelicula_r.className = "m-pelicula";
     divPelicula_r.innerHTML = `
-  <a href="./error404.html"><img src="./img/imagenes slider/${pelicula.urlDeImagen}" alt="pelicula"></a>`;
+  <a href="./error404.html"><img src="./img/imagenesSlider/${pelicula.urlDeImagen}" alt="pelicula"></a>`;
     divCarouselRecomendadas.append(divPelicula_r);
   }
   contenedorCarouselRecomendadas.appendChild(divCarouselRecomendadas);
