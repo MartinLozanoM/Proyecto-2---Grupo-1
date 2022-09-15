@@ -3,7 +3,7 @@
 .m-contenedor-titulo-controles {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: start;
   /*VOS AGREGASTE ESTE MARGIN-BOTTOM, NO ESTABA. Fue para alejar el carousel del titulo*/
   margin-bottom: 10px;
 }
@@ -13,15 +13,21 @@
   font-size: 15px;
 }
 
+.m-contenedor-titulo-controles .m-indicadores {
+  display: flex;
+}
+
 .m-contenedor-titulo-controles .m-indicadores button,
 .m-contenedor-titulo-controles .m-indicadores-terror button,
 .m-contenedor-titulo-controles .m-indicadores-comedia button {
   background-color: #fff;
-  height: 3px;
-  width: 10px;
+  height: 6px;
+  width: 6px;
   cursor: pointer;
   border: none;
-  margin-right: 2px;
+  margin: 5px;
+  border-radius: 50%;
+  opacity: 0.5;
 }
 
 .m-contenedor-titulo-controles .m-indicadores button:hover,
@@ -137,6 +143,12 @@ DICEN LOS COMENTARIOS ASI FUNCIONE*/
   .m-contenedor-titulo-controles h3 {
     font-size: 18px;
   }
+  .m-contenedor-titulo-controles .m-indicadores button,
+  .m-contenedor-titulo-controles .m-indicadores-terror button,
+  .m-contenedor-titulo-controles .m-indicadores-comedia button {
+    height: 7px;
+    width: 7px;
+  }
   .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel {
     height: 130px;
   }
@@ -149,6 +161,12 @@ DICEN LOS COMENTARIOS ASI FUNCIONE*/
 @media screen and (min-width: 1024px) {
   .m-contenedor-titulo-controles h3 {
     font-size: 20px;
+  }
+  .m-contenedor-titulo-controles .m-indicadores button,
+  .m-contenedor-titulo-controles .m-indicadores-terror button,
+  .m-contenedor-titulo-controles .m-indicadores-comedia button {
+    height: 8px;
+    width: 8px;
   }
   .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel {
     height: 150px;

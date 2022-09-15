@@ -45,7 +45,7 @@ const divCarouselComedia = document.createElement("div");
 // ? --------------- Agrego clases -----------------
 divCarouselComedia.className = "m-carousel";
 
-for (let i = 31; i < 45; i++) {
+for (let i = 31; i < 46; i++) {
   const divPelicula = document.createElement("div");
   divPelicula.className = "m-pelicula";
   divPelicula.innerHTML = `<a href="./error404.html"><img src="./img/comedia/${i}.jpg" alt="pelicula"></a>`;
@@ -84,28 +84,72 @@ const flechaDerechaComedia = document.getElementById("flecha-der-comedia");
 // ? --------------- Event Listener para la flecha derecha RECOMENDADAS -----------------
 flechaDerecha.addEventListener("click", () => {
   fila.scrollLeft += fila.offsetWidth;
+
+  const indicadorActivo = document.querySelector(".m-indicadores .activo");
+  if (indicadorActivo.nextSibling) {
+    indicadorActivo.nextSibling.classList.add("activo");
+    indicadorActivo.classList.remove("activo");
+  }
 });
 // ? --------------- Event Listener para la flecha izquierda RECOMENDADAS-----------------
 flechaIzquierda.addEventListener("click", () => {
   fila.scrollLeft -= fila.offsetWidth;
+
+  const indicadorActivo = document.querySelector(".m-indicadores .activo");
+  if (indicadorActivo.previousSibling) {
+    indicadorActivo.previousSibling.classList.add("activo");
+    indicadorActivo.classList.remove("activo");
+  }
 });
 // ! --------------- Terror ------------------------
 // ? --------------- Event Listener para la flecha derecha TERROR -----------------
 flechaDerechaTerror.addEventListener("click", () => {
   filaTerror.scrollLeft += filaTerror.offsetWidth;
+
+  const indicadorActivo = document.querySelector(
+    ".m-indicadores-terror .activo"
+  );
+  if (indicadorActivo.nextSibling) {
+    indicadorActivo.nextSibling.classList.add("activo");
+    indicadorActivo.classList.remove("activo");
+  }
 });
 //  ? --------------- Event Listener para la flecha izquierda TERROR -----------------
 flechaIzquierdaTerror.addEventListener("click", () => {
   filaTerror.scrollLeft -= filaTerror.offsetWidth;
+
+  const indicadorActivo = document.querySelector(
+    ".m-indicadores-terror .activo"
+  );
+  if (indicadorActivo.previousSibling) {
+    indicadorActivo.previousSibling.classList.add("activo");
+    indicadorActivo.classList.remove("activo");
+  }
 });
 // ! --------------- Comedia ------------------------
 // ? --------------- Event Listener para la flecha derecha COMEDIA -----------------
 flechaDerechaComedia.addEventListener("click", () => {
   filaComedia.scrollLeft += filaComedia.offsetWidth;
+
+  const indicadorActivo = document.querySelector(
+    ".m-indicadores-comedia .activo"
+  );
+  if (indicadorActivo.nextSibling) {
+    indicadorActivo.nextSibling.classList.add("activo");
+    indicadorActivo.classList.remove("activo");
+  }
 });
 //  ? --------------- Event Listener para la flecha izquierda COMEDIA -----------------
 flechaIzquierdaComedia.addEventListener("click", () => {
   filaComedia.scrollLeft -= filaComedia.offsetWidth;
+
+  const indicadorActivo = document.querySelector(
+    ".m-indicadores-comedia .activo"
+  );
+  if (indicadorActivo.previousSibling) {
+    indicadorActivo.previousSibling.classList.add("activo");
+    indicadorActivo.classList.remove("activo");
+  }
 });
 
 // ? --------------- Paginacion -----------------
@@ -140,125 +184,104 @@ flechaIzquierdaComedia.addEventListener("click", () => {
 //   return numeroPaginasPrueba;
 // };
 // ! --------------- Recomendadas ------------------------
-let numeroPaginasRecomendadas = 0;
-if (window.screen.availWidth === 320) {
-  numeroPaginasRecomendadas = Math.ceil(peliculas.length / 2);
-} else if (window.screen.availWidth === 768) {
-  numeroPaginasRecomendadas = Math.ceil(peliculas.length / 4);
-} else if (window.screen.availWidth === 1024) {
-  numeroPaginasRecomendadas = Math.ceil(peliculas.length / 5);
-}
 
-for (let i = 0; i < numeroPaginasRecomendadas; i++) {
-  const indicador = document.createElement("button");
-
-  if (i === 0) {
-    indicador.classList.add("activo");
+function calcularPaginas() {
+  let pag = 0;
+  if (window.screen.availWidth <= 420) {
+    pag = Math.ceil(peliculas.length / 2);
+  } else if (window.screen.availWidth <= 820) {
+    pag = Math.ceil(peliculas.length / 4);
+  } else if (window.screen.availWidth <= 1600) {
+    pag = Math.ceil(peliculas.length / 5);
   }
 
-  document.querySelector(".m-indicadores").appendChild(indicador);
-  indicador.addEventListener("click", (e) => {
-    fila.scrollLeft = i * fila.offsetWidth;
+  const reiniciarBotones = document.querySelector(".m-indicadores");
+  reiniciarBotones.innerHTML = "";
 
-    document.querySelector(".m-indicadores .activo").classList.remove("activo");
-    e.target.classList.add("activo");
-  });
+  for (let i = 0; i < pag; i++) {
+    const indicador = document.createElement("button");
+
+    if (i === 0) {
+      indicador.classList.add("activo");
+    }
+
+    reiniciarBotones.appendChild(indicador);
+    indicador.addEventListener("click", (e) => {
+      fila.scrollLeft = i * fila.offsetWidth;
+
+      document
+        .querySelector(".m-indicadores .activo")
+        .classList.remove("activo");
+      e.target.classList.add("activo");
+    });
+  }
 }
+
+calcularPaginas();
+
 // ! --------------- Terror ------------------------
-let numeroPaginasTerror = 0;
-
-if (window.screen.availWidth === 320) {
-  numeroPaginasTerror = Math.ceil(peliculasTerror.length / 2);
-} else if (window.screen.availWidth === 768) {
-  numeroPaginasTerror = Math.ceil(peliculasTerror.length / 4);
-} else if (window.screen.availWidth === 1024) {
-  numeroPaginasTerror = Math.ceil(peliculasTerror.length / 5);
-}
-
-for (let i = 0; i < numeroPaginasTerror; i++) {
-  const indicador = document.createElement("button");
-
-  if (i === 0) {
-    indicador.classList.add("activo");
+function calcularPaginasTerror() {
+  let pagTerror = 0;
+  if (window.screen.availWidth <= 420) {
+    pagTerror = Math.ceil(peliculasTerror.length / 2);
+  } else if (window.screen.availWidth <= 820) {
+    pagTerror = Math.ceil(peliculasTerror.length / 4);
+  } else if (window.screen.availWidth <= 1600) {
+    pagTerror = Math.ceil(peliculasTerror.length / 5);
   }
 
-  document.querySelector(".m-indicadores-terror").appendChild(indicador);
-  indicador.addEventListener("click", (e) => {
-    filaTerror.scrollLeft = i * filaTerror.offsetWidth;
+  const reiniciarBotones = document.querySelector(".m-indicadores-terror");
+  reiniciarBotones.innerHTML = "";
 
-    document
-      .querySelector(".m-indicadores-terror .activo")
-      .classList.remove("activo");
-    e.target.classList.add("activo");
-  });
+  for (let i = 0; i < pagTerror; i++) {
+    const indicador = document.createElement("button");
+
+    if (i === 0) {
+      indicador.classList.add("activo");
+    }
+
+    reiniciarBotones.appendChild(indicador);
+    indicador.addEventListener("click", (e) => {
+      filaTerror.scrollLeft = i * filaTerror.offsetWidth;
+
+      document
+        .querySelector(".m-indicadores-terror .activo")
+        .classList.remove("activo");
+      e.target.classList.add("activo");
+    });
+  }
 }
+calcularPaginasTerror();
 // ! --------------- Comedia ------------------------
-let numeroPaginasComedia = 0;
-
-if (window.screen.availWidth === 320) {
-  numeroPaginasComedia = Math.ceil(peliculasComedia.length / 2);
-} else if (window.screen.availWidth === 768) {
-  numeroPaginasComedia = Math.ceil(peliculasComedia.length / 4);
-} else if (window.screen.availWidth === 1024) {
-  numeroPaginasComedia = Math.ceil(peliculasComedia.length / 5);
-}
-
-for (let i = 0; i < numeroPaginasComedia; i++) {
-  const indicador = document.createElement("button");
-
-  if (i === 0) {
-    indicador.classList.add("activo");
+function calcularPaginasComedia() {
+  let pagComedia = 0;
+  if (window.screen.availWidth <= 420) {
+    pagComedia = Math.ceil(peliculasComedia.length / 2);
+  } else if (window.screen.availWidth <= 820) {
+    pagComedia = Math.ceil(peliculasComedia.length / 4);
+  } else if (window.screen.availWidth <= 1600) {
+    pagComedia = Math.ceil(peliculasComedia.length / 5);
   }
 
-  document.querySelector(".m-indicadores-comedia").appendChild(indicador);
-  indicador.addEventListener("click", (e) => {
-    filaComedia.scrollLeft = i * filaComedia.offsetWidth;
+  const reiniciarBotones = document.querySelector(".m-indicadores-comedia");
+  reiniciarBotones.innerHTML = "";
 
-    document
-      .querySelector(".m-indicadores-comedia .activo")
-      .classList.remove("activo");
-    e.target.classList.add("activo");
-  });
+  for (let i = 0; i < pagComedia; i++) {
+    const indicador = document.createElement("button");
+
+    if (i === 0) {
+      indicador.classList.add("activo");
+    }
+
+    reiniciarBotones.appendChild(indicador);
+    indicador.addEventListener("click", (e) => {
+      filaComedia.scrollLeft = i * filaComedia.offsetWidth;
+
+      document
+        .querySelector(".m-indicadores-comedia .activo")
+        .classList.remove("activo");
+      e.target.classList.add("activo");
+    });
+  }
 }
-// // ? --------------- Hover -----------------
-// // ! --------------- Recomendadas ------------------------
-// peliculas.forEach((pelicula) => {
-//   pelicula.addEventListener("mouseenter", (e) => {
-//     const elemento = e.currentTarget;
-//     setTimeout(() => {
-//       peliculas.forEach((pelicula) => pelicula.classList.remove("hover"));
-//       elemento.classList.add("hover");
-//     }, 300);
-//   });
-// });
-// fila.addEventListener("mouseleave", () => {
-//   peliculas.forEach((pelicula) => pelicula.classList.remove("hover"));
-// });
-// // ! --------------- Terror ------------------------
-// peliculasTerror.forEach((pelicula) => {
-//   pelicula.addEventListener("mouseenter", (e) => {
-//     const elemento = e.currentTarget;
-//     setTimeout(() => {
-//       peliculasTerror.forEach((pelicula) => pelicula.classList.remove("hover"));
-//       elemento.classList.add("hover");
-//     }, 300);
-//   });
-// });
-// filaTerror.addEventListener("mouseleave", () => {
-//   peliculasTerror.forEach((pelicula) => pelicula.classList.remove("hover"));
-// });
-// // ! --------------- Comedia ------------------------
-// peliculasComedia.forEach((pelicula) => {
-//   pelicula.addEventListener("mouseenter", (e) => {
-//     const elemento = e.currentTarget;
-//     setTimeout(() => {
-//       peliculasComedia.forEach((pelicula) =>
-//         pelicula.classList.remove("hover")
-//       );
-//       elemento.classList.add("hover");
-//     }, 300);
-//   });
-// });
-// filaComedia.addEventListener("mouseleave", () => {
-//   peliculasComedia.forEach((pelicula) => pelicula.classList.remove("hover"));
-// });
+calcularPaginasComedia();
