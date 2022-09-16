@@ -10,7 +10,7 @@
 
 .m-contenedor-titulo-controles h3 {
   color: var(--blanco);
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .m-contenedor-titulo-controles .m-indicadores {
@@ -143,7 +143,7 @@ DICEN LOS COMENTARIOS ASI FUNCIONE*/
     margin-bottom: 20px;
   }
   .m-contenedor-titulo-controles h3 {
-    font-size: 18px;
+    font-size: 15px;
   }
   .m-contenedor-titulo-controles .m-indicadores button,
   .m-contenedor-titulo-controles .m-indicadores-terror button,
