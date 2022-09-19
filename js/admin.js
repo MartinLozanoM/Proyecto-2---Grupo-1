@@ -68,11 +68,11 @@ divModalAdmin_new.innerHTML = `
   <form class="row g-3  form_Admin">
       <div class="col-12 col-md-4">
         <label for="id_new" class="form-label">Id</label>
-        <input type="number" id="id_new" class="form-control" placeholder="Id de pelicula" required>
+        <input type="number" maxlength="5" id="id_new" class="form-control" placeholder="Id de pelicula" required>
         </div>
       <div class="col-12 col-md-8">
         <label for="nombre_new" class="form-label">Pelicula</label>
-        <input type="text" class="form-control" id="nombre_new" placeholder="Ingresá nombre de la pelicula" required>
+        <input type="text" class="form-control" maxlength="15" id="nombre_new" placeholder="Ingresá nombre de la pelicula" required>
         </div>
       <div class="col-12 col-md-7">
         <label for="categoria_new" class="form-label">Categoria</label>
@@ -97,7 +97,7 @@ divModalAdmin_new.innerHTML = `
         </textarea>
       </div>
       <div class="col-12">
-        <label for="url_imagen_edit_new" class="form-label">Url de Imagen</label>
+        <label for="url_imagen_edit_new" maxlength="20" class="form-label">Url de Imagen</label>
         <input type="text" class="form-control" id="url_imagen_edit_new" placeholder="Ingresá url de imagen" required>
       </div>
     </form>
@@ -137,7 +137,7 @@ divModalAdmin_upd.innerHTML = `
         </div>
       <div class="col-12 col-md-8">
         <label for="pelicula_edit" class="form-label">Pelicula</label>
-        <input type="text" class="form-control" id="pelicula_edit" placeholder="Ingresá nombre de la pelicula" required>
+        <input type="text" maxlength="15" class="form-control" id="pelicula_edit" placeholder="Ingresá nombre de la pelicula" required>
       </div>
       <div class="col-12 col-md-7">
         <label for="categoria_edit" class="form-label">Categoria</label>
@@ -157,13 +157,13 @@ divModalAdmin_upd.innerHTML = `
       </div>
       <div class="col-12">
         <label for="descripcion_edit" class="form-label">Descripción</label>
-        <textarea class="form-control" id="descripcion_edit" rows="3" placeholder="Ingresá descripción"
+        <textarea class="form-control" maxlength="30" id="descripcion_edit" rows="3" placeholder="Ingresá descripción"
         required>
         </textarea>
       </div>
       <div class="col-12">
       <label for="url_imagen_edit" class="form-label">Url de Imagen</label>
-      <input type="text" class="form-control" id="url_imagen_edit" placeholder="Ingresá url de imagen" required>
+      <input type="text" class="form-control" maxlength="20" id="url_imagen_edit" placeholder="Ingresá url de imagen" required>
       </div>
     </form>
   </div>
