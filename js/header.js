@@ -121,7 +121,7 @@ divModal.innerHTML = `
     <label for="password_Usuario" class="form-label">Contraseña</label>
     <input type="password" required maxlength="20" class="form-control" id="input_password" aria-describedby="infoAUsuario">
     </div>
-    <div id="infoAUsuario" class="infoUsuario-login">Recuperar contraseña</div>
+    <div id="infoAUsuario" class="infoUsuario-login"><a href="#">Recuperar contraseña</a></div>
     </div>
     <div class="mt-2">
     <button type="button" id="botonEntrar" onClick="entrarAdmin()" class="btn-entrar w-100">Entrar</button>

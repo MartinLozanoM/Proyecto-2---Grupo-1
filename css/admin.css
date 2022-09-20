@@ -71,6 +71,7 @@ main {
   /* border-radius: 30%; */
   margin: 5px 0;
   font-size: 12px;
+  font-weight: bold;
 }
 .botonNew:hover {
   background-color: var(--azulOscuro);
@@ -88,23 +89,25 @@ main {
 
 /* estilos al modal */
 #header_modal {
-  background-color: var(--blanco);
-  color: var(--verde);
+  background-color: var(--azulOscuro);
+  color: var(--blanco);
 }
 #header_modal h5 {
-  font-weight: 600;
-  /* font-weight: bold; */
+  font-size: 17px;
 }
 .btn_modal_admin {
-  border: 0.5px solid var(--blanco);
+  border: 1px dotted var(--azulOscuro);
   padding: 8px;
-  color: var(--verde);
-  background-color: var(--blanco);
+  color: var(--azulOscuro);
+  background-color: rgba(128, 128, 128, 0.186);
 }
 .btn_modal_admin:hover {
-  background-color: var(--verde);
+  background-color: var(--azulOscuro);
   color: var(--blanco);
   cursor: pointer;
+}
+.body_Peliculas {
+  background-color: rgba(128, 128, 128, 0.074);
 }
 
 /* /////////////////BREAKPOINTS */
@@ -134,9 +137,13 @@ main {
     font-size: 18px;
   }
   .botonNew {
-    padding: 4px;
+    padding: 5px;
     font-size: 12px;
   }
+}
+
+#infoAUsuario a {
+  text-decoration: none;
 }
 
 /* modo pc */
@@ -163,6 +170,6 @@ main {
   }
   .botonNew {
     padding: 7px;
-    font-size: 13px;
+    font-size: 15px;
   }
 } ;

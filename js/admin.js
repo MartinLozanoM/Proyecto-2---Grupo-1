@@ -166,7 +166,7 @@ divModalAdmin_upd.innerHTML = `
       </div>
     </form>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer" id="footer-modal">
     <button type="button" id="guardarCambios_upd" class="btn_modal_admin">Guardar</button>
     <button type="button" class="btn_modal_admin" data-bs-dismiss="modal">Cancelar</button>
   </div>
