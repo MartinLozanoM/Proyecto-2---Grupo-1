@@ -16,7 +16,7 @@
 header .navBar {
   height: 40px;
   display: flex;
-  justify-content: end;
+  /* justify-content: end; */
   align-items: center;
   position: relative;
 }
@@ -24,20 +24,12 @@ header .navBar {
 /* ESTILOS AL LOGO */
 
 #img_logo {
-  height: 30px;
-  width: 25px;
-  margin-right: 5px;
+  margin-left: 2px;
+  height: 20px;
+  width: 20px;
+  /* margin-right: 5px; */
   display: block;
-}
-#img_logoOculto {
-  height: 46px;
-  width: 48px;
-  margin-right: 5px;
-  display: block;
-}
-
-.contenedor-logoDeMenu {
-  margin-top: 10px;
+  cursor: pointer;
 }
 
 /* MENU LATERAL */
@@ -46,62 +38,67 @@ header .navBar {
   display: none;
 }
 
-#container-menu {
+.container-menu {
   position: absolute;
-  /* background: rgba(0, 0, 0, 0.5); */
+  background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 50vh;
-  top: 40px;
-  left: 38vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px; /*para posicionar a la izq*/
   transition: all 500ms ease;
+  opacity: 0;
+  visibility: hidden;
 }
 
+.container-menu-click {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* este es el contenedor del menu ocultp
+aca vemos lo del menu hamburguesa */
 .cont-menu {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  max-width: 160px;
-  background: #283149e7;
-  height: 31.5vh;
-  /* position: relative; */
+  max-width: 180px;
+  background: #1c1c1c;
+  height: 100vh;
+  position: relative;
   transition: all 500ms ease;
-  /* border-radius: 10%; */
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  border: 3px solid var(--azulOscuro);
+  transform: translateX(-100%);
+}
+
+.cont-menu-click {
+  transform: translateX(0%);
+}
+
+.cont-menu nav {
+  transform: translateY(20%);
 }
 
 .cont-menu nav a {
   display: block;
   text-decoration: none;
-  padding: 15px;
+  padding: 20px;
   color: var(--blanco) !important;
   border-left: 3px solid transparent;
   transition: all 400ms ease;
 }
 
 .cont-menu nav a:hover {
-  border-right: 2px solid var(--verde);
-  border-left: 2px solid var(--verde);
-  /* border-radius: 4%; */
-  background-color: #343a4ae9;
+  border-left: 3px solid var(--verde);
+  background-color: #1f1f1f;
   cursor: pointer;
 }
 
-.botonSistema {
-  border: none;
-  background-color: transparent;
-  color: var(--blanco);
-  display: block;
-  font-weight: 600;
-  margin-left: 17px;
-}
-.botonSistema:hover {
-  border-right: 2px solid var(--verde);
-  border-left: 2px solid var(--verde);
-  /* border-radius: 4%; */
-  background-color: #343a4ae9;
+.cont-menu label {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  color: #fff;
   cursor: pointer;
+  font-size: 13px;
 }
 
 /* breakpoints */
@@ -119,20 +116,15 @@ header .navBar {
   .navBar {
     height: 50px;
   }
-  /* movimiento del menu oculto */
-  #container-menu {
-    top: 40px;
-    left: 74vw;
-  }
-  .cont-menu {
-    position: relative;
-    font-size: 12px;
-    height: 32vh;
-  }
 
   #img_logo {
-    height: 31px;
-    width: 26px;
+    height: 28px;
+    width: 25px;
+  }
+
+  .cont-menu {
+    max-width: 200px;
+    font-size: 15px;
   }
 }
 
@@ -143,31 +135,20 @@ header .navBar {
   .navBar {
     min-height: 55px;
     display: flex;
-    /* justify-content: space-between; */
   }
   #img_logo {
     height: 36px;
     width: 33px;
   }
 
-  #img_logoOculto {
-    margin-top: 5px;
-    height: 60px;
-    width: 60px;
-  }
-
-  /* movimiento del menu oculto */
-  #container-menu {
-    top: 54px;
-    left: 75vw;
-  }
   .cont-menu {
-    max-width: 210px;
-    height: 28vh;
-    font-size: 16px;
+    max-width: 250px;
+    font-size: 20px;
   }
-
   .cont-menu nav a {
-    padding: 16px;
+    padding: 25px;
+  }
+  .cont-menu label {
+    font-size: 18px;
   }
 }

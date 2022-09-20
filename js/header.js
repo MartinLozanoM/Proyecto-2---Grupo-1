@@ -7,6 +7,7 @@ const divLogo = document.createElement("div");
 const divMenu_Oculto = document.createElement("div");
 const cont_Menu_Oculto = document.createElement("div");
 const navBar_Menu_Oculto = document.createElement("nav");
+const label = document.createElement("label");
 
 // Opciones del menu oculto
 const opcionA = document.createElement("a");
@@ -14,17 +15,20 @@ const opcionB = document.createElement("a");
 const opcionC = document.createElement("a");
 const opcionD = document.createElement("a");
 
+label.setAttribute("for", "btn_menu");
+label.className = "bi bi-x-lg";
+
 // agrego clase a los elementos creados.
 navBar.className = "navBar";
 divLogo.className = "contenedor-logoDeMenu";
 
-divMenu_Oculto.setAttribute("id", "container-menu");
+// divMenu_Oculto.setAttribute("id", "container-menu");
+divMenu_Oculto.className = "container-menu";
 cont_Menu_Oculto.className = "cont-menu";
 
 divLogo.innerHTML = `
 <label for="btn_menu">
 <img id="img_logo" src="./img/botonHam.png" alt="logo" />
-<img id="img_logoOculto" class="d-none" src="./img/camara.png" alt="logo" />
 </label>
 <input id="btn_menu" type="checkbox"></input>`;
 
@@ -51,6 +55,8 @@ navBar_Menu_Oculto.appendChild(opcionC);
 navBar_Menu_Oculto.appendChild(opcionD);
 
 cont_Menu_Oculto.appendChild(navBar_Menu_Oculto);
+cont_Menu_Oculto.appendChild(label);
+
 divMenu_Oculto.appendChild(cont_Menu_Oculto);
 
 // unir al header
@@ -67,20 +73,18 @@ window.addEventListener("scroll", () => {
     navBar.className = "navBar";
   }
 });
-divMenu_Oculto.className = "d-none";
+
+// Cambio clases si el usuario toca el boton hamburguesa,
+// muestro o oculto segun corresponda
 divLogo.addEventListener("click", () => {
-  const logo = document.getElementById("img_logo");
-  const logoOculto = document.getElementById("img_logoOculto");
   const inputCheck = document.getElementById("btn_menu");
 
   if (inputCheck.checked) {
-    divMenu_Oculto.className = "d-block";
-    logo.className = "d-none";
-    logoOculto.className = "d-block";
+    divMenu_Oculto.classList = "container-menu container-menu-click";
+    cont_Menu_Oculto.classList = "cont-menu cont-menu-click";
   } else {
-    divMenu_Oculto.className = "d-none";
-    logo.className = "d-block";
-    logoOculto.className = "d-none";
+    divMenu_Oculto.classList = "container-menu";
+    cont_Menu_Oculto.classList = "cont-menu";
   }
 });
 
