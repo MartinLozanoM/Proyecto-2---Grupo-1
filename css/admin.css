@@ -73,7 +73,7 @@ main {
   font-size: 12px;
 }
 .botonNew:hover {
-  background-color: var(--verde);
+  background-color: var(--azulOscuro);
   color: var(--blanco);
 }
 
@@ -131,24 +131,26 @@ main {
   .flexible i {
     padding: 10px;
     margin: 2px;
-    font-size: 20px;
+    font-size: 18px;
   }
   .botonNew {
-    padding: 9px;
-    font-size: 15px;
+    padding: 4px;
+    font-size: 12px;
   }
 }
 
 /* modo pc */
 @media (min-width: 992px) {
+  #titulo_admin {
+    font-size: 26px;
+  }
+
   .contenedorGrilla {
     min-width: 800px;
   }
-  .contenedorGrilla th {
-    font-size: 21px;
-  }
+  .contenedorGrilla th,
   .contenedorGrilla td {
-    font-size: 20px;
+    font-size: 17px;
   }
   .botonNew {
     padding: 5px;
@@ -157,10 +159,10 @@ main {
   .flexible i {
     padding: 10px;
     margin: 2px;
-    font-size: 28px;
+    font-size: 20px;
   }
   .botonNew {
-    padding: 12px;
-    font-size: 19px;
+    padding: 7px;
+    font-size: 13px;
   }
 } ;
