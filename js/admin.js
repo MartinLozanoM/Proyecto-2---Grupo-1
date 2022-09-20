@@ -10,8 +10,8 @@ const grilla = document.createElement("table");
 const encabezado_grilla = document.createElement("thead");
 const cuerpo_grilla = document.createElement("tbody");
 
-// const div_titulo = document.createElement("div");
-// div_titulo.innerHTML = `<h2 id="titulo_admin">Adminitración de Peliculas</h2>`;
+const div_titulo = document.createElement("div");
+div_titulo.innerHTML = `<h2 id="titulo_admin">Adminitración de Peliculas</h2>`;
 
 // creo el contenedor de botones y el  boton de insert
 const contenedorBotonera = document.createElement("div");
@@ -26,8 +26,7 @@ btn_new.className = "botonNew";
 btn_new.innerHTML = `AGREGAR`;
 
 // Agrego clases a la grilla
-grilla.className =
-  "table grilla table-striped table-hover table-bordered border-dark table-sm";
+grilla.className = "table grilla  table-bordered border-secondary table-sm";
 divFlexible.className = "contenedorFlexilla_grilla";
 encabezado_grilla.className = "encabezado_grilla";
 cuerpo_grilla.className = "cuerpo_grilla";
@@ -39,7 +38,7 @@ encabezado_grilla.innerHTML = `
 <tr>
 <th scope="col">Pelicula</th>
 <th scope="col">Categoria</th>
-<th scope="col"></th>
+<th scope="col">Acciones</th>
 </tr>`;
 
 // MODAL PARA INSERTAR PELI
@@ -182,6 +181,7 @@ contenedorBotonera.appendChild(btn_new); //agrego 'boton insert' en div botonera
 contenedorGrilla.appendChild(divModalAdmin_new);
 contenedorGrilla.appendChild(divModalAdmin_upd);
 contenedorGrilla.appendChild(contenedorBotonera); //inserto div botonera
+divFlexible.appendChild(div_titulo);
 contenedorGrilla.appendChild(grilla); //inserto la grilla en su contenedor
 divFlexible.appendChild(contenedorGrilla); //inserto el contenedor de grilla en el div flex
 contenedor.appendChild(divFlexible);
@@ -192,18 +192,26 @@ const cargarGrilla = () => {
   PELICULAS.forEach((p) => {
     let fila = document.createElement("tr");
     fila.innerHTML = `
-    <td>${p.nombre}</td>
-    <td>${p.categoria}</td>
     <td>
-      <div class="actions">
-      <a type="button" id="upd_${p.id}"
-        data-bs-toggle="modal" data-bs-target="#modal_BtnUpdate" >
-        <i class="bi bi-pencil-square"></i>
-      </a>
-      <a  type="button" id="del_${p.id}">
-        <i class="bi bi-trash-fill"></i>
-      </a>
-      <i class="bi bi-bookmark-star" id="destacada_${p.id}"></i>
+      <div class="flexible">
+        ${p.nombre}
+      </div>
+    </td>
+    <td>
+      <div class="flexible">
+        ${p.categoria}  
+      </div>
+    </td>
+    <td>
+      <div class="flexible">
+        <a type="button" id="upd_${p.id}"
+          data-bs-toggle="modal" data-bs-target="#modal_BtnUpdate" >
+          <i class="bi bi-pencil-square"></i>
+        </a>
+        <a  type="button" id="del_${p.id}">
+          <i class="bi bi-trash-fill"></i>
+        </a>
+        <i class="bi bi-bookmark-star" id="destacada_${p.id}"></i>
       </div>
     </td>
     `;
