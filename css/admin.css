@@ -1,15 +1,26 @@
+main {
+  margin-top: 10vh;
+}
+
+#titulo_admin {
+  font-size: 15px;
+  text-align: center;
+  font-weight: 600;
+  font-weight: bold;
+  color: var(--azulOscuro);
+  margin: 40px 0;
+  border-bottom: 1px solid rgba(133, 176, 205, 0.466);
+}
+
 .contenedorFlexilla_grilla {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10vh;
-  /* justify-content: center; */
 }
 
 .grilla {
-  background-color: var(--verde);
+  background-color: var(--azulOscuro);
   color: var(--azulOscuro);
 }
 
@@ -19,21 +30,84 @@
 
 .cuerpo_grilla {
   background-color: var(--blanco);
-  font-size: 12px;
+  font-size: 10px;
 }
 
 /* Estilos a el contenedor de grilla */
 
 .contenedorGrilla {
   width: 300px;
+  color: var(--azulOscuro);
+  text-align: center;
 }
 
 /* ESTILOS A LAS ACCIONES DE GRILLA */
-.botonNuevo {
-  padding: 2px;
+.boton {
+  padding: 10px;
   /* margin: 10px; */
   border: none;
   background-color: transparent;
+}
+
+/* ESTILOS AL FORM */
+.flexible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.flexible i {
+  padding: 5px;
+  margin: 2px;
+  font-size: 17px;
+  color: var(--azulOscuro);
+}
+.botonNew {
+  border: 1px solid var(--blanco); /* border: none; */
+  background-color: #28314930;
+  color: var(--azulOscuro);
+  font-size: bold;
+  padding: 3px;
+  /* border-radius: 30%; */
+  margin: 5px 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+.botonNew:hover {
+  background-color: var(--azulOscuro);
+  color: var(--blanco);
+}
+
+.contenedorGrilla th {
+  color: var(--blanco);
+}
+
+.contenedorGrilla td {
+  font-size: 13px;
+  padding: 0px;
+}
+
+/* estilos al modal */
+#header_modal {
+  background-color: var(--azulOscuro);
+  color: var(--blanco);
+}
+#header_modal h5 {
+  font-size: 17px;
+}
+.btn_modal_admin {
+  border: 1px dotted var(--azulOscuro);
+  padding: 8px;
+  color: var(--azulOscuro);
+  background-color: rgba(128, 128, 128, 0.186);
+}
+.btn_modal_admin:hover {
+  background-color: var(--azulOscuro);
+  color: var(--blanco);
+  cursor: pointer;
+}
+.body_Peliculas {
+  background-color: rgba(128, 128, 128, 0.074);
 }
 
 /* /////////////////BREAKPOINTS */
@@ -44,8 +118,58 @@
   .contenedorGrilla {
     width: 600px;
   }
+  #titulo_admin {
+    font-size: 22px;
+  }
+  .form_Admin .destacada {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .contenedorGrilla th,
+  .contenedorGrilla td {
+    font-size: 15px;
+  }
+
+  .flexible i {
+    padding: 10px;
+    margin: 2px;
+    font-size: 18px;
+  }
+  .botonNew {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+
+#infoAUsuario a {
+  text-decoration: none;
 }
 
 /* modo pc */
 @media (min-width: 992px) {
+  #titulo_admin {
+    font-size: 26px;
+  }
+
+  .contenedorGrilla {
+    min-width: 800px;
+  }
+  .contenedorGrilla th,
+  .contenedorGrilla td {
+    font-size: 17px;
+  }
+  .botonNew {
+    padding: 5px;
+    font-size: 15px;
+  }
+  .flexible i {
+    padding: 10px;
+    margin: 2px;
+    font-size: 20px;
+  }
+  .botonNew {
+    padding: 7px;
+    font-size: 15px;
+  }
 } ;

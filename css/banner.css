@@ -3,7 +3,7 @@
   background: linear-gradient(
       0deg,
       rgba(40, 49, 73, 1) 0%,
-      rgba(40, 49, 73, 0.1) 100%
+      rgba(40, 49, 73, 0.2) 100%
     ),
     url(https://images.unsplash.com/photo-1527184478405-b1cf212ab2a3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80/Proyecto-2---Grupo-1/img/pareja.avif);
   background-position: center center;
@@ -35,15 +35,15 @@
   margin-right: 5px;
   /* border: 1px solid var(--azulOscuro); */
   background-color: rgba(255, 255, 255, 0.544);
-  padding: 0.1px 3px;
+  padding: 2px 3px;
   border-radius: 100px;
   font-weight: 600;
-  font-size: 7px;
+  font-size: 8px;
   color: black;
 }
 
 .btn-VerMas {
-  padding-left: 0px;
+  /* padding-left: 0px; */
   background-color: rgba(255, 255, 255, 0.287);
 }
 
@@ -63,16 +63,15 @@
     margin-top: 10px;
     padding: 3px;
     font-size: 12px;
+    border: 1px dotted rgba(255, 255, 255, 0.287);
   }
   .banner-titulo {
+    margin-top: 23vh;
     font-size: 19px;
     font-weight: bold;
   }
   .banner-descripcion {
     font-size: 11px;
-  }
-  .btn-VerMas {
-    padding-left: 0px;
   }
 }
 
@@ -88,8 +87,5 @@
   .botones {
     padding: 4px;
     font-size: 15px;
-  }
-  .btn-VerMas {
-    padding-left: 0px;
   }
 }

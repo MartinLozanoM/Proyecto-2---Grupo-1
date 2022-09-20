@@ -16,15 +16,19 @@
 header .navBar {
   height: 40px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: end; */
   align-items: center;
   position: relative;
 }
 
 /* ESTILOS AL LOGO */
-#img_menu {
-  height: 30px;
-  width: 25px;
+
+#img_logo {
+  margin-left: 2px;
+  height: 20px;
+  width: 20px;
+  /* margin-right: 5px; */
+  display: block;
   cursor: pointer;
 }
 
@@ -34,29 +38,43 @@ header .navBar {
   display: none;
 }
 
-#container-menu {
+.container-menu {
   position: absolute;
-  /* background: rgba(0, 0, 0, 0.5); */
+  background: rgba(0, 0, 0, 0.357);
   width: 100%;
-  height: 50vh;
-  top: 50px;
-  left: 35vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px; /*para posicionar a la izq*/
   transition: all 500ms ease;
+  opacity: 0;
+  visibility: hidden;
 }
 
+.container-menu-click {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* este es el contenedor del menu ocultp
+aca vemos lo del menu hamburguesa */
 .cont-menu {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  max-width: 200px;
-  background: #1f1f1fdb;
-  height: 38vh;
-  /* position: relative; */
+  max-width: 180px;
+  background: var(--azulOscuro);
+  height: 100vh;
+  position: relative;
   transition: all 500ms ease;
-  /* border-radius: 10%; */
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  border: 3px solid var(--azulOscuro);
+  transform: translateX(-100%);
+}
+
+.cont-menu-click {
+  transform: translateX(0%);
+}
+
+.cont-menu nav {
+  transform: translateY(20%);
 }
 
 .cont-menu nav a {
@@ -64,16 +82,23 @@ header .navBar {
   text-decoration: none;
   padding: 20px;
   color: var(--blanco) !important;
-  border-left: 3px solid transparent;
+  border-left: 1px solid transparent;
   transition: all 400ms ease;
 }
 
 .cont-menu nav a:hover {
-  border-right: 3px solid var(--blanco);
-  border-left: 3px solid var(--blanco);
-  /* border-radius: 4%; */
-  background-color: #28314978;
+  border-left: 1px solid var(--blanco);
+  background-color: #1f1f1f45;
   cursor: pointer;
+}
+
+.cont-menu label {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
 }
 
 /* breakpoints */
@@ -91,15 +116,15 @@ header .navBar {
   .navBar {
     height: 50px;
   }
-  /* movimiento del menu oculto */
-  #container-menu {
-    top: 40px;
-    left: 73vw;
+
+  #img_logo {
+    height: 28px;
+    width: 25px;
   }
+
   .cont-menu {
-    /* position: relative; */
-    font-size: 13px;
-    height: 39.1vh;
+    max-width: 200px;
+    font-size: 15px;
   }
 }
 
@@ -108,19 +133,22 @@ header .navBar {
     font-size: 16px;
   }
   .navBar {
-    height: 60px;
+    min-height: 55px;
     display: flex;
-    justify-content: space-between;
   }
-  /* movimiento del menu oculto */
-  #container-menu {
-    top: 40px;
-    left: 76vw;
+  #img_logo {
+    height: 36px;
+    width: 33px;
   }
+
   .cont-menu {
-    max-width: 230px;
-    height: 33vh;
-    /* position: relative; */
+    max-width: 250px;
+    font-size: 20px;
+  }
+  .cont-menu nav a {
+    padding: 25px;
+  }
+  .cont-menu label {
     font-size: 18px;
   }
 }

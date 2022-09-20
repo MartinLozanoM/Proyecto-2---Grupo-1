@@ -3,25 +3,31 @@
 .m-contenedor-titulo-controles {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: start;
   /*VOS AGREGASTE ESTE MARGIN-BOTTOM, NO ESTABA. Fue para alejar el carousel del titulo*/
-  margin-bottom: 28px;
+  margin-bottom: 10px;
 }
 
 .m-contenedor-titulo-controles h3 {
-  color: #fff;
-  font-size: 20px;
+  color: var(--blanco);
+  font-size: 12px;
+}
+
+.m-contenedor-titulo-controles .m-indicadores {
+  display: flex;
 }
 
 .m-contenedor-titulo-controles .m-indicadores button,
 .m-contenedor-titulo-controles .m-indicadores-terror button,
 .m-contenedor-titulo-controles .m-indicadores-comedia button {
   background-color: #fff;
-  height: 3px;
-  width: 10px;
+  height: 6px;
+  width: 6px;
   cursor: pointer;
   border: none;
-  margin-right: 2px;
+  margin: 5px;
+  border-radius: 50%;
+  opacity: 0.5;
 }
 
 .m-contenedor-titulo-controles .m-indicadores button:hover,
@@ -48,14 +54,15 @@
   display: flex;
   align-items: center;
   position: relative;
-  height: 130px;
+  height: 120px;
 }
 
 .m-peliculas-recomendadas .m-contenedor-principal .m-flecha-izquierda,
 .m-peliculas-recomendadas .m-contenedor-principal .m-flecha-derecha {
   position: absolute;
   border: none;
-  background-color: rgba(0, 0, 0, 0.3);
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  background-color: rgba(255, 255, 255, 0.134);
   font-size: 40px;
   /* El HEIGHT original estaba en: 50% */
   height: 49%;
@@ -63,15 +70,18 @@
   line-height: 40px;
   /* El WIDTH original estaba en: 50px */
   width: 25px;
-  color: #fff;
+  color: var(--verde);
+  opacity: 0.5;
   cursor: pointer;
-  z-index: 500;
+  z-index: 1;
   transition: 0.2s ease all;
 }
 
 .m-peliculas-recomendadas .m-contenedor-principal .m-flecha-izquierda:hover,
 .m-peliculas-recomendadas .m-contenedor-principal .m-flecha-derecha:hover {
-  background-color: rgba(0, 0, 0, 0.9);
+  /* background-color: rgba(0, 0, 0, 0.9); */
+  background-color: rgba(255, 255, 255, 0.134);
+  opacity: 1;
 }
 
 .m-peliculas-recomendadas .m-contenedor-principal .m-flecha-izquierda {
@@ -98,16 +108,16 @@
   display: flex;
   flex-wrap: nowrap;
   /* No tenia height, lo pusiste para adaptarlo en moviles */
-  height: 150px;
+  height: 100px;
 }
 
 .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula {
   /* El min width funciona para ver el porcentaje de peliculas que se veran
   en el carousel, tendria que estar en el 20% para mostrar 5 peliculas */
-  min-width: 49.95%;
+  min-width: 49%;
   transition: 0.3s ease all;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  margin: 0% 0.1%;
+  margin-right: 3px;
 }
 
 .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula:hover {
@@ -129,13 +139,49 @@ DICEN LOS COMENTARIOS ASI FUNCIONE*/
 
 /* Tablets */
 @media screen and (min-width: 768px) {
+  .m-contenedor-titulo-controles {
+    margin-bottom: 20px;
+  }
+  .m-contenedor-titulo-controles h3 {
+    font-size: 15px;
+  }
+  .m-contenedor-titulo-controles .m-indicadores button,
+  .m-contenedor-titulo-controles .m-indicadores-terror button,
+  .m-contenedor-titulo-controles .m-indicadores-comedia button {
+    height: 7px;
+    width: 7px;
+  }
+  .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel {
+    height: 130px;
+  }
   .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula {
-    min-width: 25%;
+    min-width: 24.3%;
+    margin-right: 5px;
   }
 }
 
 @media screen and (min-width: 1024px) {
+  .m-contenedor-titulo-controles h3 {
+    font-size: 20px;
+  }
+  .m-contenedor-titulo-controles .m-indicadores button,
+  .m-contenedor-titulo-controles .m-indicadores-terror button,
+  .m-contenedor-titulo-controles .m-indicadores-comedia button {
+    height: 8px;
+    width: 8px;
+  }
+  .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel {
+    height: 150px;
+  }
   .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula {
-    min-width: 20%;
+    min-width: 19.3%;
+    margin-right: 7px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .m-peliculas-recomendadas .m-contenedor-carousel .m-carousel .m-pelicula {
+    min-width: 19.6%;
+    margin-right: 7px;
   }
 }

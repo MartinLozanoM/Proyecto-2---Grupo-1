@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: var(--violetaMedio) !important;
+  background-color: rgba(255, 255, 255, 0.039) !important;
 }
 
 .FuenteTitulo {
@@ -23,7 +23,7 @@ body {
 }
 
 main {
-  margin-bottom: 14vh;
+  margin-bottom: 20vh;
 }
 
 .modal-backdrop {
